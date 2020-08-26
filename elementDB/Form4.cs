@@ -48,7 +48,8 @@ namespace elementDB
                                                String.Format("{0:yyyy-MM-dd}", dr["time_stamp"]),
                                                dr["failure_name"],
                                                dr["description"],
-                                               dr["document"]);
+                                               dr["document"],
+                                               dr["failure_type"]);
                     }
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
                     dataGridView1.CurrentCell = dataGridView1[1, dataGridView1.Rows.Count - 1];
@@ -77,7 +78,8 @@ namespace elementDB
                 {
                     if (row.Cells["failure_name"].Value.ToString().Equals(textBox2.Text) &&
                         row.Cells["description"].Value.ToString().Equals(textBox3.Text) &&
-                        row.Cells["document"].Value.ToString().Equals(textBox1.Text))
+                        row.Cells["document"].Value.ToString().Equals(textBox1.Text)&&
+                        row.Cells["failure_type"].Value.ToString().Equals(comboBox1.Text))//добавил 26,08,2020
                     {
                         MessageBox.Show("Такая запись уже существует");
                         return;
@@ -86,11 +88,17 @@ namespace elementDB
                 
                 sql += "BEGIN;";
 
-                sql += String.Format("INSERT INTO `failures` " +
+                /*sql += String.Format("INSERT INTO `failures` " +
                     "(unit_id, time_stamp, failure_name, description, document)" +
                     " VALUES ({0}, '{1}', '{2}', '{3}', '{4}'); ",
                 _id, dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"), 
-                textBox2.Text, textBox3.Text, textBox1.Text);
+                textBox2.Text, textBox3.Text, textBox1.Text);*/
+                sql += String.Format("INSERT INTO `failures` " +
+                    "(unit_id, time_stamp, failure_name, description, document, failure_type)" +
+                    " VALUES ({0}, '{1}', '{2}', '{3}', '{4}', '{5}'); ",
+                _id, dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),
+                textBox2.Text, textBox3.Text, textBox1.Text, comboBox1.Text);
+
 
                 sql += string.Format("UPDATE unit_info SET last_update = '{0}' " +
                                      "WHERE unit_id = {1}; ", DateTime.Today.ToString("yyyy-MM-dd"), _id);
@@ -181,6 +189,7 @@ namespace elementDB
             textBox2.Text = e.Row.Cells[2].Value.ToString();
             textBox3.Text = e.Row.Cells[3].Value.ToString();
             textBox1.Text = e.Row.Cells[4].Value.ToString();
+            comboBox1.Text = e.Row.Cells[5].Value.ToString();//добавил 26,08,2020
         }
 
         private void setAccessSettings()
