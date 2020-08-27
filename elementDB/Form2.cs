@@ -43,7 +43,7 @@ namespace elementDB
             setAccessSettings();
 
             textBox12.Text = "Краткая информация о разрешениии";//подсказка
-            textBox12.ForeColor = Color.Gray;
+
 
 
             checkBox1.Enabled = false;
@@ -1006,11 +1006,15 @@ namespace elementDB
 
         private void textBox12_TextChanged(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox1.ForeColor = Color.Black;
+            textBox12.ForeColor = Color.Black;
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

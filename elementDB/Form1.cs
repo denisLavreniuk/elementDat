@@ -37,7 +37,7 @@ namespace elementDB
         Form14 frm14;
         Form13 frm13;
         Form15 frm15;
-        failures fail;
+        failures fai;
         public int id = -1;
         public int size = 8;//размер шрифта
         //Timer timer;
@@ -1013,6 +1013,17 @@ namespace elementDB
 
         private void failuresBtn_Click(object sender, EventArgs e)
         {
+            if (fai == null || fai.IsDisposed)
+            {
+                fai = new failures((comboBox9.SelectedIndex == -1 || comboBox9.Items[comboBox9.SelectedIndex].ToString() == "Все изделия") ? "" : comboBox9.Text);
+                fai.Show();
+            }
+            else
+            {
+                fai.WindowState = FormWindowState.Maximized;
+                fai.Activate();
+                fai.BringToFront();
+            }
             //Form fail = new failures();
             //fail.Show(); // отображаем Form2
         }

@@ -118,5 +118,10 @@ namespace elementDB
                 button1.PerformClick();
             }
         }
+
+        private void Form9_Load(object sender, EventArgs e)
+        {
+            //textBox1.Text = "dq82d";
+        }
     }
 }
