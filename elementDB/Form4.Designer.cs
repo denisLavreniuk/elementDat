@@ -32,6 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time_stamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.failure_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.document = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.failure_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,12 +52,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time_stamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.failure_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.document = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.failure_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -102,6 +102,54 @@
             this.dataGridView1.Size = new System.Drawing.Size(643, 221);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 125;
+            // 
+            // time_stamp
+            // 
+            this.time_stamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.time_stamp.HeaderText = "Дата отказа";
+            this.time_stamp.MinimumWidth = 6;
+            this.time_stamp.Name = "time_stamp";
+            this.time_stamp.ReadOnly = true;
+            this.time_stamp.Width = 120;
+            // 
+            // failure_name
+            // 
+            this.failure_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.failure_name.HeaderText = "Название отказа";
+            this.failure_name.MinimumWidth = 6;
+            this.failure_name.Name = "failure_name";
+            this.failure_name.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.description.HeaderText = "Описание";
+            this.description.MinimumWidth = 6;
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // document
+            // 
+            this.document.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.document.HeaderText = "Документ";
+            this.document.MinimumWidth = 6;
+            this.document.Name = "document";
+            this.document.ReadOnly = true;
+            // 
+            // failure_type
+            // 
+            this.failure_type.HeaderText = "Тип отказа";
+            this.failure_type.Name = "failure_type";
+            this.failure_type.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -285,54 +333,6 @@
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            this.id.Width = 125;
-            // 
-            // time_stamp
-            // 
-            this.time_stamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.time_stamp.HeaderText = "Дата отказа";
-            this.time_stamp.MinimumWidth = 6;
-            this.time_stamp.Name = "time_stamp";
-            this.time_stamp.ReadOnly = true;
-            this.time_stamp.Width = 120;
-            // 
-            // failure_name
-            // 
-            this.failure_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.failure_name.HeaderText = "Название отказа";
-            this.failure_name.MinimumWidth = 6;
-            this.failure_name.Name = "failure_name";
-            this.failure_name.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.description.HeaderText = "Описание";
-            this.description.MinimumWidth = 6;
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // document
-            // 
-            this.document.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.document.HeaderText = "Документ";
-            this.document.MinimumWidth = 6;
-            this.document.Name = "document";
-            this.document.ReadOnly = true;
-            // 
-            // failure_type
-            // 
-            this.failure_type.HeaderText = "Тип отказа";
-            this.failure_type.Name = "failure_type";
-            this.failure_type.ReadOnly = true;
             // 
             // comboBox1
             // 

@@ -37,7 +37,9 @@ namespace elementDB
         Form14 frm14;
         Form13 frm13;
         Form15 frm15;
+        failures fail;
         public int id = -1;
+        public int size = 14;//размер шрифта
         //Timer timer;
 
         public Form1()
@@ -1007,6 +1009,14 @@ namespace elementDB
         private void metroRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (metroRadioButton2.Checked) checkBox7.Checked = true;
+        }
+
+        private void failuresBtn_Click(object sender, EventArgs e)
+        {
+            size++;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
+            //Form fail = new failures();
+            //fail.Show(); // отображаем Form2
         }
     }
 }
