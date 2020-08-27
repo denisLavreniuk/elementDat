@@ -51,6 +51,7 @@ namespace elementDB
         public float nsid2 = 0;
 
         public int cb = 0;
+        public int size = 8;//размер шрифта
 
 
         public int id = -1;
@@ -1055,7 +1056,6 @@ namespace elementDB
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (textBox4.Text != "") checkBox3.Checked = true;
-
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -1081,6 +1081,22 @@ namespace elementDB
         private void metroRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (metroRadioButton2.Checked) checkBox6.Checked = true;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            size++;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
+        }
+
+
+        private void metroButton2_Click_1(object sender, EventArgs e)
+        {
+            size--;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }

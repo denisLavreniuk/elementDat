@@ -80,12 +80,16 @@
             this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
             this.metroRadioButton = new MetroFramework.Controls.MetroRadioButton();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -97,7 +101,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(992, 450);
+            this.groupBox1.Size = new System.Drawing.Size(992, 482);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Список изделий";
@@ -139,8 +143,9 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(988, 304);
+            this.dataGridView1.Size = new System.Drawing.Size(988, 311);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
             // 
@@ -339,20 +344,22 @@
             this.groupBox2.Controls.Add(this.tableLayoutPanel2);
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(2, 319);
+            this.groupBox2.Location = new System.Drawing.Point(2, 326);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(988, 129);
+            this.groupBox2.Size = new System.Drawing.Size(988, 154);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Поиск";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -361,7 +368,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(377, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(377, 59);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
             // button1
@@ -372,7 +379,7 @@
             this.button1.Location = new System.Drawing.Point(2, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 30);
+            this.button1.Size = new System.Drawing.Size(146, 55);
             this.button1.TabIndex = 1;
             this.button1.Text = "Отчёт";
             this.button1.UseVisualStyleBackColor = true;
@@ -380,10 +387,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(190, 2);
+            this.button2.Location = new System.Drawing.Point(152, 2);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 30);
+            this.button2.Size = new System.Drawing.Size(146, 55);
             this.button2.TabIndex = 0;
             this.button2.Text = "Поиск";
             this.button2.UseVisualStyleBackColor = true;
@@ -707,11 +714,46 @@
             this.textBox7.TabIndex = 36;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.metroButton1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.metroButton2, 0, 1);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(303, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(71, 53);
+            this.tableLayoutPanel7.TabIndex = 28;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton1.Location = new System.Drawing.Point(3, 3);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(65, 20);
+            this.metroButton1.TabIndex = 0;
+            this.metroButton1.Text = "Шрифт +";
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(3, 29);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(65, 21);
+            this.metroButton2.TabIndex = 1;
+            this.metroButton2.Text = "Шрифт -";
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
+            // 
             // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 450);
+            this.ClientSize = new System.Drawing.Size(992, 482);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form11";
@@ -724,6 +766,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -781,5 +824,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

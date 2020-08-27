@@ -39,7 +39,7 @@ namespace elementDB
         Form15 frm15;
         failures fail;
         public int id = -1;
-        public int size = 14;//размер шрифта
+        public int size = 8;//размер шрифта
         //Timer timer;
 
         public Form1()
@@ -1013,10 +1013,25 @@ namespace elementDB
 
         private void failuresBtn_Click(object sender, EventArgs e)
         {
-            size++;
-            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
             //Form fail = new failures();
             //fail.Show(); // отображаем Form2
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            size++;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            if (size > 1)
+            {
+                size--;
+                dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
+                MessageBox.Show(size.ToString());
+            }
+            else MessageBox.Show("Ошибка! размер шрифта = 0");
         }
     }
 }
