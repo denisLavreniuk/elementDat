@@ -121,8 +121,8 @@ namespace elementDB
 
         private void Form9_Load(object sender, EventArgs e)
         {
-            textBox1.Text = "dq82d";
-            button1.PerformClick();
+            //textBox1.Text = "dq82d";
+            //button1.PerformClick();
         }
     }
 }

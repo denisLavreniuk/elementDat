@@ -751,7 +751,7 @@ namespace elementDB
 
             //TotalBlocksRDC(row);
 
-            //else row.Cells["before_first_repair_hours"].Style.BackColor = Color.PaleGreen;
+            //else row.Cells["before_first_repair_hours"].Style.BackColor = Color.PaleGreen
             //////////////////////////////////////////////////////////////////↑↑↑↑
             return true;
         }
