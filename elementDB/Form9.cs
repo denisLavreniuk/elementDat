@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace elementDB
 {
-    
+
     public partial class Form9 : Form
     {
         public Form9()
@@ -51,7 +51,7 @@ namespace elementDB
             if (dt.Rows.Count > 0)
             {
                 users access = (users)Convert.ToInt32(dt.Rows[0][0]);
-             
+
                 switch (access)
                 {
                     case users.Btk:
@@ -121,7 +121,8 @@ namespace elementDB
 
         private void Form9_Load(object sender, EventArgs e)
         {
-            //textBox1.Text = "dq82d";
+            textBox1.Text = "dq82d";
+            button1.PerformClick();
         }
     }
 }

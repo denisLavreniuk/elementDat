@@ -1040,7 +1040,6 @@ namespace elementDB
             {
                 size--;
                 dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
-                MessageBox.Show(size.ToString());
             }
             else MessageBox.Show("Ошибка! размер шрифта = 0");
         }

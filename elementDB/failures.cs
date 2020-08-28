@@ -20,38 +20,38 @@ namespace elementDB
     public partial class failures : Form
     {
 
-        public string Filepath = @"D:\Отчёт.txt";
-        public string strtowrite = "";
-        public string total = "";
-        public float rdc1 = 0;
-        public float rdc2 = 0;
-        public float brt3 = 0;
-        public float bzg1 = 0;
-        public float kpa = 0;
-        public float kpa2 = 0;
-        public float bzg2 = 0;
-        public float brt = 0;
-        public float brt2 = 0;
-        public float kpto = 0;
-        public float kpto2 = 0;
-        public float sid = 0;
-        public float sid2 = 0;
+        //public string Filepath = @"D:\Отчёт.txt";
+        //public string strtowrite = "";
+        //public string total = "";
+        //public float rdc1 = 0;
+        //public float rdc2 = 0;
+        //public float brt3 = 0;
+        //public float bzg1 = 0;
+        //public float kpa = 0;
+        //public float kpa2 = 0;
+        //public float bzg2 = 0;
+        //public float brt = 0;
+        //public float brt2 = 0;
+        //public float kpto = 0;
+        //public float kpto2 = 0;
+        //public float sid = 0;
+        //public float sid2 = 0;
 
-        public float nrdc = 0;
-        public float nbzg = 0;
-        public float nkpa = 0;
-        public float nbrt = 0;
-        public float nkpto = 0;
-        public float nrdc2 = 0;
-        public float nbzg2 = 0;
-        public float nkpa2 = 0;
-        public float nbrt2 = 0;
-        public float nkpto2 = 0;
-        public float nsid = 0;
-        public float nsid2 = 0;
+        //public float nrdc = 0;
+        //public float nbzg = 0;
+        //public float nkpa = 0;
+        //public float nbrt = 0;
+        //public float nkpto = 0;
+        //public float nrdc2 = 0;
+        //public float nbzg2 = 0;
+        //public float nkpa2 = 0;
+        //public float nbrt2 = 0;
+        //public float nkpto2 = 0;
+        //public float nsid = 0;
+        //public float nsid2 = 0;
 
-        public int cb = 0;
-        public int size = 8;//размер шрифта
+        //public int cb = 0;
+        //public int size = 8;//размер шрифта
 
 
         public int id = -1;
