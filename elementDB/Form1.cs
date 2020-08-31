@@ -131,8 +131,8 @@ namespace elementDB
         //Find Func
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (!checkBox1.Checked && !checkBox2.Checked && !checkBox3.Checked &&!checkBox4.Checked && 
-                !checkBox5.Checked && !checkBox6.Checked&&!checkBox7.Checked)
+            if (!checkBox1.Checked && !checkBox2.Checked && !checkBox3.Checked && !checkBox4.Checked &&
+                !checkBox5.Checked && !checkBox6.Checked && !checkBox7.Checked)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Не выбран параметр поиска. Обновить список блоков?",
@@ -227,9 +227,9 @@ namespace elementDB
                     comboBox7.Text);
             }
 
-            if(checkBox7.Checked)
+            if (checkBox7.Checked)
             {
-                if(checkBox1.Checked||checkBox2.Checked||checkBox3.Checked||checkBox4.Checked||checkBox5.Checked||checkBox6.Checked)
+                if (checkBox1.Checked || checkBox2.Checked || checkBox3.Checked || checkBox4.Checked || checkBox5.Checked || checkBox6.Checked)
                 {
                     sql += "AND";
                 }
@@ -927,7 +927,7 @@ namespace elementDB
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text != "") checkBox1.Checked=true;
+            if (textBox1.Text != "") checkBox1.Checked = true;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1041,7 +1041,7 @@ namespace elementDB
                 size--;
                 dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
             }
-            else MessageBox.Show("Ошибка! размер шрифта = 0");
+            else size = 1;
         }
     }
 }

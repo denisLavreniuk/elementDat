@@ -35,6 +35,7 @@
             this.unit_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.release_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.failure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +66,8 @@
             this.unit_id,
             this.unit_num,
             this.product_code,
-            this.release_date});
+            this.release_date,
+            this.failure});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(2, 2);
@@ -118,6 +120,12 @@
             this.release_date.ReadOnly = true;
             this.release_date.Width = 70;
             // 
+            // failure
+            // 
+            this.failure.HeaderText = "Количество отказов";
+            this.failure.Name = "failure";
+            this.failure.ReadOnly = true;
+            // 
             // failures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,5 +148,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn release_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn failure;
     }
 }

@@ -90,7 +90,8 @@ namespace elementDB
                                        dr["unit_num"],
                                        dr["product_code"],
                                        string.Format("{0:yyyy-MM-dd}",
-                                       dr["release_date"]));
+                                       dr["release_date"]),
+                                       dr["failure"]);
             }
             if (dt.Rows.Count > 0)
             {

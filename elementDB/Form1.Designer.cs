@@ -701,7 +701,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.724391F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.38015F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel1.Controls.Add(this.comboBox7, 9, 1);
             this.tableLayoutPanel1.Controls.Add(this.checkBox6, 9, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox8, 8, 2);
@@ -744,9 +744,9 @@
             // 
             this.comboBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(747, 29);
+            this.comboBox7.Location = new System.Drawing.Point(742, 29);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(181, 21);
+            this.comboBox7.Size = new System.Drawing.Size(179, 21);
             this.comboBox7.TabIndex = 37;
             this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
@@ -755,7 +755,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox6.Location = new System.Drawing.Point(746, 2);
+            this.checkBox6.Location = new System.Drawing.Point(741, 2);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(120, 22);
@@ -766,7 +766,7 @@
             // textBox8
             // 
             this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8.Location = new System.Drawing.Point(690, 54);
+            this.textBox8.Location = new System.Drawing.Point(685, 54);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(52, 20);
@@ -776,7 +776,7 @@
             // textBox7
             // 
             this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Location = new System.Drawing.Point(690, 28);
+            this.textBox7.Location = new System.Drawing.Point(685, 28);
             this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(52, 20);
@@ -788,7 +788,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(659, 56);
+            this.label11.Location = new System.Drawing.Point(654, 56);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 17);
@@ -800,7 +800,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(659, 30);
+            this.label10.Location = new System.Drawing.Point(654, 30);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 17);
@@ -813,7 +813,7 @@
             this.checkBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tableLayoutPanel1.SetColumnSpan(this.checkBox5, 2);
             this.checkBox5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox5.Location = new System.Drawing.Point(659, 2);
+            this.checkBox5.Location = new System.Drawing.Point(654, 2);
             this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(65, 22);
@@ -824,10 +824,10 @@
             // textBox4
             // 
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(552, 54);
+            this.textBox4.Location = new System.Drawing.Point(548, 54);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(103, 20);
+            this.textBox4.Size = new System.Drawing.Size(102, 20);
             this.textBox4.TabIndex = 27;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
@@ -837,7 +837,7 @@
             this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tableLayoutPanel1.SetColumnSpan(this.checkBox4, 2);
             this.checkBox4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox4.Location = new System.Drawing.Point(521, 2);
+            this.checkBox4.Location = new System.Drawing.Point(517, 2);
             this.checkBox4.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(81, 22);
@@ -848,10 +848,10 @@
             // textBox5
             // 
             this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Location = new System.Drawing.Point(552, 28);
+            this.textBox5.Location = new System.Drawing.Point(548, 28);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(103, 20);
+            this.textBox5.Size = new System.Drawing.Size(102, 20);
             this.textBox5.TabIndex = 26;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -860,7 +860,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(521, 56);
+            this.label7.Location = new System.Drawing.Point(517, 56);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 17);
@@ -872,7 +872,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(521, 30);
+            this.label6.Location = new System.Drawing.Point(517, 30);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 17);
@@ -884,7 +884,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox3.Location = new System.Drawing.Point(329, 2);
+            this.checkBox3.Location = new System.Drawing.Point(327, 2);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(82, 22);
@@ -898,7 +898,7 @@
             this.dateTimePicker3.Location = new System.Drawing.Point(137, 54);
             this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(188, 20);
+            this.dateTimePicker3.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker3.TabIndex = 26;
             this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
@@ -919,7 +919,7 @@
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.MinimumSize = new System.Drawing.Size(100, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(188, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker2.TabIndex = 20;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
@@ -1014,9 +1014,9 @@
             // 
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(330, 29);
+            this.comboBox1.Location = new System.Drawing.Point(328, 29);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 21);
+            this.comboBox1.Size = new System.Drawing.Size(184, 21);
             this.comboBox1.TabIndex = 36;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -1024,7 +1024,7 @@
             // 
             this.checkBox7.AutoSize = true;
             this.checkBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox7.Location = new System.Drawing.Point(933, 2);
+            this.checkBox7.Location = new System.Drawing.Point(926, 2);
             this.checkBox7.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(121, 17);
@@ -1035,7 +1035,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(933, 54);
+            this.textBox6.Location = new System.Drawing.Point(926, 54);
             this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(200, 20);
@@ -1050,12 +1050,12 @@
             this.tableLayoutPanel6.Controls.Add(this.metroRadioButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.metroRadioButton2, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(933, 28);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(926, 28);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(222, 22);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(229, 22);
             this.tableLayoutPanel6.TabIndex = 40;
             // 
             // metroRadioButton
@@ -1068,7 +1068,7 @@
             this.metroRadioButton.Location = new System.Drawing.Point(2, 2);
             this.metroRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton.Name = "metroRadioButton";
-            this.metroRadioButton.Size = new System.Drawing.Size(107, 18);
+            this.metroRadioButton.Size = new System.Drawing.Size(110, 18);
             this.metroRadioButton.TabIndex = 3;
             this.metroRadioButton.TabStop = true;
             this.metroRadioButton.Text = "точно";
@@ -1083,10 +1083,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroRadioButton2.AutoSize = true;
             this.metroRadioButton2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroRadioButton2.Location = new System.Drawing.Point(113, 2);
+            this.metroRadioButton2.Location = new System.Drawing.Point(116, 2);
             this.metroRadioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(107, 18);
+            this.metroRadioButton2.Size = new System.Drawing.Size(111, 18);
             this.metroRadioButton2.TabIndex = 4;
             this.metroRadioButton2.TabStop = true;
             this.metroRadioButton2.Text = "грубо";
@@ -1101,7 +1101,7 @@
             this.label4.Location = new System.Drawing.Point(23, 119);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 17);
+            this.label4.Size = new System.Drawing.Size(0, 16);
             this.label4.TabIndex = 7;
             this.label4.Text = "Шифр";
             // 

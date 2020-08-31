@@ -1092,7 +1092,8 @@ namespace elementDB
 
         private void metroButton2_Click_1(object sender, EventArgs e)
         {
-            size--;
+            if (size > 1) size--;
+            else size = 1;
             dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
