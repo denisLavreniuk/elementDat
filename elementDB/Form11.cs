@@ -163,6 +163,10 @@ namespace elementDB
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+                if (row.Index % 2 == 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Lavender;
+                }
             }
         }
 

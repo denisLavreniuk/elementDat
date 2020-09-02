@@ -35,7 +35,8 @@
             this.unit_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.release_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.failure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.failures_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.all_failures = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -52,14 +53,14 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(846, 426);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -67,7 +68,8 @@
             this.unit_num,
             this.product_code,
             this.release_date,
-            this.failure});
+            this.failures_count,
+            this.all_failures});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(2, 2);
@@ -77,7 +79,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(842, 378);
+            this.dataGridView1.Size = new System.Drawing.Size(842, 392);
             this.dataGridView1.TabIndex = 4;
             // 
             // unit_id
@@ -120,11 +122,17 @@
             this.release_date.ReadOnly = true;
             this.release_date.Width = 70;
             // 
-            // failure
+            // failures_count
             // 
-            this.failure.HeaderText = "Количество отказов";
-            this.failure.Name = "failure";
-            this.failure.ReadOnly = true;
+            this.failures_count.HeaderText = "Количество отказов";
+            this.failures_count.Name = "failures_count";
+            this.failures_count.ReadOnly = true;
+            // 
+            // all_failures
+            // 
+            this.all_failures.HeaderText = "Все отказы";
+            this.all_failures.Name = "all_failures";
+            this.all_failures.ReadOnly = true;
             // 
             // failures
             // 
@@ -148,6 +156,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn release_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn failure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn failures_count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn all_failures;
     }
 }
