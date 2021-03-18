@@ -100,6 +100,7 @@ namespace elementDB
                                            dr["unit_num"],
                                            dr["notes"],
                                            dr["product_code"],
+                                           dr["izmKD"],
                                            String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                            Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                            Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),
@@ -173,6 +174,7 @@ namespace elementDB
 
             if (checkBox1.Checked)
             {
+                if (textBox3.Text == "") textBox3.Text = 9999.ToString();
                 sql += string.Format("unit_num BETWEEN '{0}' and '{1}' ",
                     textBox1.Text, textBox3.Text);
             }
@@ -247,7 +249,6 @@ namespace elementDB
                      "(SELECT unit_id FROM contracts " +
                      "WHERE product_code like '%{0}%')",
                      textBox6.Text);
-                    //sql += string.Format("product_code='%{0}%'", textBox6.Text);
                 }
             }
 
@@ -265,6 +266,7 @@ namespace elementDB
                                        dr["unit_num"],
                                        dr["notes"],
                                        dr["product_code"],
+                                       dr["izmKD"],
                                        String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                        Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                        Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),

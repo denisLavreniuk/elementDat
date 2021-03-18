@@ -18,7 +18,9 @@ namespace elementDB
         public Form10(int id, Form2 parent)
         {
             m_parent = parent;
-            this.Text = m_parent.m_unitTitle + " - Ремонт";
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_unitTitle + " - Ремонт";
             InitializeComponent();
 
             m_id = id;
@@ -201,6 +203,12 @@ namespace elementDB
             textBox1.Text = e.Row.Cells[1].Value.ToString();
             textBox2.Text = e.Row.Cells[2].Value.ToString();
             textBox4.Text = e.Row.Cells[4].Value.ToString();
+            textBox3.Text = e.Row.Cells[5].Value.ToString();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

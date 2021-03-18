@@ -18,7 +18,9 @@ namespace elementDB
         public Form7(int id, Form2 parent)
         {
             m_parent = parent;
-            this.Text = parent.m_unitTitle + " - История статуса";
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + parent.m_unitTitle + " - История статуса";
             BackColor = Color.PowderBlue;
             InitializeComponent();
 

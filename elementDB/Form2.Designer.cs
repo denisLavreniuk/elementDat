@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.KD = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -39,7 +42,6 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -81,13 +83,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -112,6 +118,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.60567F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.60416F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label13, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox11, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.label12, 1, 7);
@@ -120,7 +127,6 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox7, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.label10, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBox5, 2, 5);
@@ -167,6 +173,46 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1201, 583);
             this.tableLayoutPanel1.TabIndex = 30;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.AutoSize = true;
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.KD, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox2, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(299, 44);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(404, 35);
+            this.tableLayoutPanel6.TabIndex = 40;
+            // 
+            // KD
+            // 
+            this.KD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KD.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.KD.Location = new System.Drawing.Point(204, 2);
+            this.KD.Margin = new System.Windows.Forms.Padding(2);
+            this.KD.Name = "KD";
+            this.KD.ReadOnly = true;
+            this.KD.Size = new System.Drawing.Size(198, 19);
+            this.KD.TabIndex = 7;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(198, 19);
+            this.textBox2.TabIndex = 6;
             // 
             // label13
             // 
@@ -251,6 +297,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(298, 2);
@@ -260,17 +307,6 @@
             this.textBox1.Size = new System.Drawing.Size(406, 19);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(298, 43);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(406, 19);
-            this.textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
@@ -757,6 +793,7 @@
             // 
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox1.Enabled = false;
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(791, 84);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -790,10 +827,12 @@
             this.checkBox1.Text = "редактировать";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
@@ -803,6 +842,27 @@
             this.groupBox2.Size = new System.Drawing.Size(1205, 37);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.metroButton1, 0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(179, 32);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(3, 3);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(173, 23);
+            this.metroButton1.TabIndex = 0;
+            this.metroButton1.Text = "× Закрыть без сохранения";
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // label9
             // 
@@ -834,6 +894,8 @@
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -841,6 +903,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -857,7 +920,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox5;
@@ -900,5 +962,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TextBox KD;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

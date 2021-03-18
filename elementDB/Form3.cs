@@ -18,7 +18,9 @@ namespace elementDB
 
         public Form3(int id, string title)
         {
-            this.Text = title;
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + title;
             _id = id;
             BackColor = Color.PowderBlue;
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace elementDB
                 "assigned_res.operating_hours col_10, " +
                 "refurbished_res.period_value col_11, " +
                 "refurbished_res.operating_hours col_12, " +
+                "unit_info.comment col_14, " +/////////////////////////////////////////////////////////комментарии
                 "unit_info.remark col_13 " +
                 "FROM unit_info, varranty_res, bef_first_repair_res, " +
                 "between_repairs_res, assigned_res, refurbished_res " +
@@ -65,6 +68,7 @@ namespace elementDB
                 textBox5.Text = dt.Rows[0]["col_10"].ToString();
                 textBox11.Text = dt.Rows[0]["col_11"].ToString();
                 textBox7.Text = dt.Rows[0]["col_12"].ToString();
+                comments.Text = dt.Rows[0]["col_14"].ToString();////////////////////////////комментарии
             }
             else
             {
@@ -85,6 +89,7 @@ namespace elementDB
                 "assigned_res.operating_hours col_10, " +
                 "refurbished_res.period_value col_11, " +
                 "refurbished_res.operating_hours col_12, " +
+                "unit_info.comment col_14, " +/////////////////////////////////////////////////////////комментарии
                 "unit_info.remark col_13 " +
                 "FROM unit_info, varranty_res, bef_first_repair_res, " +
                 "between_repairs_res, assigned_res, refurbished_res " +
@@ -280,6 +285,19 @@ namespace elementDB
                     dtOld.Rows[0]["col_12"].ToString(),
                     textBox7.Text);
             }
+
+            if (dtOld.Rows[0]["col_14"].ToString() != comments.Text)////////////////////////////комментарии
+            {
+                //UPDATE `element_db`.`unit_info` SET `comment`= 'test' WHERE  `unit_id`= 862;
+                sql += string.Format("UPDATE unit_info SET " +
+                     "comment = {0} " +
+                     "WHERE unit_id = {1};",
+                    comments.Text, _id);
+            }
+
+
+
+
 
             if (dtOld.Rows[0]["col_2"].ToString() != textBox10.Text)
             {
@@ -539,18 +557,19 @@ namespace elementDB
                 return;
             }
 
-                if (textBox1.Text != "" && textBox2.Text != "" &&
+            if (textBox1.Text != "" && textBox2.Text != "" &&
                 textBox3.Text != "" && textBox4.Text != "" &&
                 textBox5.Text != "" && textBox6.Text != "" &&
                 textBox7.Text != "" && textBox8.Text != "" &&
                 textBox9.Text != "" && textBox10.Text != "" &&
-                textBox11.Text != "" && isResourcesDataChanged)
+                textBox11.Text != "" && comments.Text != "" &&
+                isResourcesDataChanged)
             {
                 sql = "SELECT * FROM varranty_res WHERE unit_id = " + _id;
 
                 dt = SQLCustom.SQL_Request(Form1.connection, sql);
 
-                if (dt.Rows.Count > 0)
+                if (dt.Rows.Count != 0)
                 {
                     isSuccessful = updateResources();
                 }
@@ -560,22 +579,28 @@ namespace elementDB
                 }
             }
 
-            if (isSuccessful)
-            {
+            //if (isSuccessful)
+            //{
                 makeRequest(_id);
                 Cursor = Cursors.Default;
                 this.Close();
-                //MessageBox.Show("Данные успешно обновлены");
-            }
-            else
-            {
-                MessageBox.Show("Ошибка записи в базу данных!");
-            }
+                MessageBox.Show("Данные успешно обновлены");
+            MessageBox.Show(sql);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Ошибка записи в базу данных!");
+            //}
+
         }
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
             isResourcesDataChanged = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
         }
     }
 }

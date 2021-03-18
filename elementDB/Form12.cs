@@ -22,7 +22,9 @@ namespace elementDB
         {
             m_id = id;
             m_parent = parent as Form11;
-            this.Text = m_parent.m_title;
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_title;
             BackColor = Color.PowderBlue;
             InitializeComponent();
             makeRequest(id);
@@ -43,6 +45,7 @@ namespace elementDB
                 "assigned_res.operating_hours col_10, " +
                 "refurbished_res.period_value col_11, " +
                 "refurbished_res.operating_hours col_12, " +
+                "unit_info.comment col_14, " +/////////////////////////////////////////////////////////комментарии
                 "unit_info.remark col_13 " +
                 "FROM unit_info, varranty_res, bef_first_repair_res, " +
                 "between_repairs_res, assigned_res, refurbished_res " +
@@ -51,6 +54,7 @@ namespace elementDB
                 "unit_info.unit_id = between_repairs_res.unit_id AND " +
                 "unit_info.unit_id = assigned_res.unit_id AND " +
                 "unit_info.unit_id = refurbished_res.unit_id AND " +
+                //"unit_info.unit_id = comment.unit_id AND " +///////////////////////////////////////////комментарии
                 "unit_info.unit_id = " + id.ToString();
 
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
@@ -67,6 +71,7 @@ namespace elementDB
                 textBox5.Text = dt.Rows[0]["col_10"].ToString();
                 textBox11.Text = dt.Rows[0]["col_11"].ToString();
                 textBox7.Text = dt.Rows[0]["col_12"].ToString();
+                comments.Text = dt.Rows[0]["col_14"].ToString();////////////////////////////комментарии
             }
 
             sql = "SELECT * from contracts WHERE unit_id = " + id;
@@ -97,6 +102,7 @@ namespace elementDB
                 "assigned_res.operating_hours col_10, " +
                 "refurbished_res.period_value col_11, " +
                 "refurbished_res.operating_hours col_12, " +
+                "unit_info.comment col_14, " +/////////////////////////////////////////////////////////комментарии
                 "unit_info.remark col_13 " +
                 "FROM unit_info, varranty_res, bef_first_repair_res, " +
                 "between_repairs_res, assigned_res, refurbished_res " +
@@ -105,6 +111,7 @@ namespace elementDB
                 "unit_info.unit_id = between_repairs_res.unit_id AND " +
                 "unit_info.unit_id = assigned_res.unit_id AND " +
                 "unit_info.unit_id = refurbished_res.unit_id AND " +
+                //"unit_info.unit_id = comment.unit_id AND "+///////////////////////////////////////////комментарии
                 "unit_info.unit_id = " + m_id.ToString();
 
             DataTable dtOld = SQLCustom.SQL_Request(Form1.connection, sqlOld);
@@ -291,6 +298,28 @@ namespace elementDB
                     "Наработка по техническому состояинию",
                     dtOld.Rows[0]["col_12"].ToString(),
                     textBox7.Text);
+            }
+
+            if (dtOld.Rows[0]["col_14"].ToString() != comments.Text)////////////////////////////комментарии
+            {
+                //UPDATE `element_db`.`unit_info` SET `comment`= 'test' WHERE  `unit_id`= 862;
+                sql += string.Format("UPDATE unit_info SET " +
+                     "comment = {0} " +
+                     "WHERE unit_id = {1};",
+                    comments.Text, m_id);
+
+
+
+
+                //sqlJournal += string.Format("('{0}', '{1}', '{2}', '{3}', " +
+                //    "'{4}', '{5}', '{6}'), ",
+                //    DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
+                //    Form1.userName,
+                //    "Изменение",
+                //    unitNum + " " + label9.Text,
+                //    "Наработка по техническому состояинию",
+                //    dtOld.Rows[0]["col_12"].ToString(),
+                //    textBox7.Text);
             }
 
             if (dtOld.Rows[0]["col_2"].ToString() != textBox10.Text)
@@ -745,7 +774,6 @@ namespace elementDB
                     isSuccessful = insertContract();
                 }
             }
-
             if (isSuccessful)
             {
                 makeRequest(m_id);
@@ -754,7 +782,6 @@ namespace elementDB
                     m_parent.collectUnits();
                 }
                 Cursor = Cursors.Default;
-                //MessageBox.Show("Данные успешно обновлены");
             }
             else
             {

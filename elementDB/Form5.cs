@@ -19,7 +19,9 @@ namespace elementDB
 
         public Form5(int id, Form2 parent)
         {
-            this.Text = parent.m_unitTitle + " - ПО";
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + parent.m_unitTitle + " - Версии ПО";
             m_id = id;
             m_parent = parent;
             BackColor = Color.PowderBlue;

@@ -250,6 +250,7 @@ namespace elementDB
 
                 if (checkBox1.Checked)
                 {
+                    if (textBox3.Text == "") textBox3.Text = 9999.ToString();
                     sql += string.Format("unit_num BETWEEN '{0}' and '{1}' ",
                         textBox1.Text, textBox3.Text);
                 }
@@ -647,8 +648,6 @@ namespace elementDB
                 return true;
             }
         }
-
-
         /// ////////////////////////////////////////////////////////////////↓↓↓↓↓↓↓
         private int WorkResourse(DataGridViewRow row)
         {
@@ -668,6 +667,26 @@ namespace elementDB
                 //row.Cells["before_first_repair_period"].Style.BackColor = Color.LightGreen;
                 return 30;
             }
+        }
+        private int assignedPeriod(DataGridViewRow row)
+        {
+            int days = (int)row.Cells["assigned_period"].Value * 30;
+            if (days <= (DateTime.Today - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays && days != 0)//пропускаем 0, для того, чтоб не отвлекало при просмотре, так как не может быть такого, что блок только выпустили, он проработал 0 месяцев и уже нужно ремонтировать
+            {
+                //row.Cells["before_first_repair_period"].Style.BackColor = Color.DarkSlateBlue;
+                return 100;
+            }
+            else if (days <= (DateTime.Today - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays + 61 && days != 0)
+            {
+                //row.Cells["before_first_repair_period"].Style.BackColor = Color.OrangeRed;
+                return 200;
+            }
+            else
+            {
+                //row.Cells["before_first_repair_period"].Style.BackColor = Color.LightGreen;
+                return 300;
+            }
+            //row.Cells["assigned_period"].Style.BackColor = Color.Orange;
         }
 
         private bool warrantyWork(DataGridViewRow row)//гарантийная наработка
@@ -692,6 +711,14 @@ namespace elementDB
             if (workHours > (int)row.Cells["between_repairs_period"].Value) return 1;
             return 0;
         }
+
+        //private short AssignedHours(DataGridViewRow row)
+        //{
+        //    int workPeriod = (int)row.Cells["operating_hours"].Value;
+        //    if (workPeriod > (int)row.Cells["assigned_hours"].Value) return 1;
+        //    else if ((workPeriod + 60) >= (int)row.Cells["assigned_hours"].Value && workPeriod <= (int)row.Cells["assigned_hours"].Value && workPeriod != 0) return 2;
+        //    else return 0;
+        //}
         /// ///////////////////////////////////////////////////////////////////↑↑↑↑↑
 
         private bool calculateResource(ResourcesData data,
@@ -718,6 +745,22 @@ namespace elementDB
             }
 
             //////////////////////////////////////////////////////////////////↓↓↓↓↓↓↓
+            if (assignedPeriod(row) == 100)
+            {
+                row.Cells["unit_num"].Style.BackColor = Color.Red;
+                row.Cells["assigned_period"].Style.BackColor = Color.Red;
+            }
+            else if (assignedPeriod(row) == 200)
+            {
+                row.Cells["unit_num"].Style.BackColor = Color.Orange;
+                row.Cells["assigned_period"].Style.BackColor = Color.Orange;
+            }
+            else if (assignedPeriod(row) == 300)
+            {
+                //row.Cells["unit_num"].Style.BackColor = Color.Green;
+                //row.Cells["assigned_period"].Style.BackColor = Color.Green;
+            }
+
             if (WorkResourse(row) == 10)
             {
                 row.Cells["unit_num"].Style.BackColor = Color.Red;
@@ -729,7 +772,6 @@ namespace elementDB
                 row.Cells["before_first_repair_period"].Style.BackColor = Color.Orange;
             }
             //else row.Cells["before_first_repair_period"].Style.BackColor = Color.LightGreen;
-
             if (warrantyWork(row) == true)
             {
                 row.Cells["warranty_hours"].Style.BackColor = Color.Yellow;
@@ -753,6 +795,32 @@ namespace elementDB
                 row.Cells["unit_num"].Style.BackColor = Color.Orange;
             }
 
+
+
+
+
+
+
+
+
+
+            
+            //if (Ass(ignedHours(row) == 1)
+            //{
+            //    row.Cells["assigned_hours"].Style.BackColor = Color.Red;
+            //    //row.Cells["unit_num"].Style.BackColor = Color.Red;
+            //}
+            //else if (AssignedHours(row) == 2)
+            //{
+            //    row.Cells["assigned_hours"].Style.BackColor = Color.Orange;
+            //    //row.Cells["unit_num"].Style.BackColor = Color.Orange;
+            //}
+
+
+
+
+
+            //else if (AssignedPeriod(row)==0) row.Cells["assigned_period"].Style.BackColor = Color.PaleGoldenrod;
             //TotalBlocksRDC(row);
 
             //else row.Cells["before_first_repair_hours"].Style.BackColor = Color.PaleGreen
@@ -774,10 +842,9 @@ namespace elementDB
                 (data.unitOperatingHours > data.operatingHours &&
                 data.operatingHours != 0))
             {
-                row.Cells["unit_num"].Style.BackColor = Color.OrangeRed;
+                row.Cells["unit_num"].Style.BackColor = Color.Red;
                 //row.Cells["assigned_period"].Style.BackColor = Color.OrangeRed;
-                row.Cells["assigned_hours"].Style.BackColor = Color.OrangeRed;
-
+                row.Cells["assigned_hours"].Style.BackColor = Color.Red;
 
                 return true;
             }

@@ -18,7 +18,9 @@ namespace elementDB
         public Form4(int id, Form2 parent)
         {
             m_parent = parent;
-            this.Text = m_parent.m_unitTitle + " - Список отказов";
+            String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
+            DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_unitTitle + " - Список отказов";
             BackColor = Color.PowderBlue;
             InitializeComponent();
             _id = id;
@@ -189,7 +191,7 @@ namespace elementDB
             textBox2.Text = e.Row.Cells[2].Value.ToString();
             textBox3.Text = e.Row.Cells[3].Value.ToString();
             textBox1.Text = e.Row.Cells[4].Value.ToString();
-            comboBox1.Text = e.Row.Cells[5].Value.ToString();//добавил 26,08,2020
+            comboBox1.Text = e.Row.Cells[5].Value.ToString();//добавил 26.08.2020
         }
 
         private void setAccessSettings()
