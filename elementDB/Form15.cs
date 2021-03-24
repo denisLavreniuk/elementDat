@@ -20,7 +20,9 @@ namespace elementDB
         {
             m_parent = parent;
 
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm";

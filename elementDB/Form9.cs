@@ -16,17 +16,19 @@ namespace elementDB
     {
         public Form9()
         {
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.LightBlue;
+            //BackColor = Color.FromArgb(0, 0, 0);
+
             this.BackgroundImage = elementDB.Properties.Resources.gotovo;
             BackgroundImageLayout = ImageLayout.Stretch;
 
             InitializeComponent();
 
-            this.Width = 1024;
-            this.Height = 768;
+            this.Width = 1280;
+            this.Height = 720;
 
             tableLayoutPanel1.Left = (this.ClientSize.Width - tableLayoutPanel1.ClientSize.Width) / 2;
-            tableLayoutPanel1.Top = (this.Height - tableLayoutPanel1.Height) / 2 - 50;
+            tableLayoutPanel1.Top = (this.Height - tableLayoutPanel1.Height) / 2 - 130;
         }
 
         private void button1_Click(object sender, EventArgs e)

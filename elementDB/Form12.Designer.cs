@@ -135,6 +135,7 @@
             this.comments.Name = "comments";
             this.comments.Size = new System.Drawing.Size(474, 43);
             this.comments.TabIndex = 37;
+            this.comments.TextChanged += new System.EventHandler(this.comments_TextChanged);
             // 
             // groupBox5
             // 

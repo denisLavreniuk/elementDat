@@ -79,7 +79,9 @@ namespace elementDB
         {
             WindowState = FormWindowState.Maximized;
             m_filter = filter;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",

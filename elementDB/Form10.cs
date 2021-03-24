@@ -28,7 +28,9 @@ namespace elementDB
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
 
             makeRequest(m_id);
 

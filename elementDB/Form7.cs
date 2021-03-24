@@ -21,7 +21,9 @@ namespace elementDB
             String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
             this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + parent.m_unitTitle + " - История статуса";
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;

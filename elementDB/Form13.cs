@@ -25,7 +25,9 @@ namespace elementDB
         {
             m_parent = parent as Form1;
 
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
 
             InitializeComponent();
 
@@ -129,7 +131,6 @@ namespace elementDB
                     return;
                 }
             }
-
             string sql = string.Format("INSERT INTO unit_names (name) " +
                 "VALUES ('{0}');", textBox1.Text);
 

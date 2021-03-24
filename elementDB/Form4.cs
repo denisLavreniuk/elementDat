@@ -21,7 +21,9 @@ namespace elementDB
             String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
             this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_unitTitle + " - Список отказов";
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
             _id = id;
 

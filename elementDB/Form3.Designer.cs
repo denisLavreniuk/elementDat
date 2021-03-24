@@ -62,7 +62,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comments = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox7.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -432,6 +431,7 @@
             this.comments.Name = "comments";
             this.comments.Size = new System.Drawing.Size(470, 49);
             this.comments.TabIndex = 39;
+            this.comments.TextChanged += new System.EventHandler(this.comments_TextChanged);
             // 
             // groupBox6
             // 
@@ -451,22 +451,11 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Установленный ресурс";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(324, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 37);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 257);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox7);
@@ -527,6 +516,5 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox comments;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button2;
     }
 }

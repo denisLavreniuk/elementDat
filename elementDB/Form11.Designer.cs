@@ -691,6 +691,9 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -699,9 +702,10 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(816, 28);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(163, 21);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(166, 22);
             this.tableLayoutPanel3.TabIndex = 37;
             // 
             // metroRadioButton2
@@ -711,10 +715,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroRadioButton2.AutoSize = true;
             this.metroRadioButton2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroRadioButton2.Location = new System.Drawing.Point(83, 2);
+            this.metroRadioButton2.Location = new System.Drawing.Point(85, 2);
             this.metroRadioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(78, 17);
+            this.metroRadioButton2.Size = new System.Drawing.Size(79, 18);
             this.metroRadioButton2.TabIndex = 5;
             this.metroRadioButton2.TabStop = true;
             this.metroRadioButton2.Text = "грубо";
@@ -732,7 +736,7 @@
             this.metroRadioButton.Location = new System.Drawing.Point(2, 2);
             this.metroRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton.Name = "metroRadioButton";
-            this.metroRadioButton.Size = new System.Drawing.Size(77, 17);
+            this.metroRadioButton.Size = new System.Drawing.Size(79, 18);
             this.metroRadioButton.TabIndex = 4;
             this.metroRadioButton.TabStop = true;
             this.metroRadioButton.Text = "точно";
@@ -742,10 +746,13 @@
             // 
             // textBox7
             // 
+            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Location = new System.Drawing.Point(816, 54);
             this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(164, 20);
+            this.textBox7.Size = new System.Drawing.Size(166, 20);
             this.textBox7.TabIndex = 36;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 

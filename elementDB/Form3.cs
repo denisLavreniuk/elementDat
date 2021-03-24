@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace elementDB
@@ -22,11 +17,11 @@ namespace elementDB
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
             this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + title;
             _id = id;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
-
             setAccessSettings();
-
             setTitle(id);
             makeRequest(id);
         }
@@ -288,13 +283,8 @@ namespace elementDB
 
             if (dtOld.Rows[0]["col_14"].ToString() != comments.Text)////////////////////////////комментарии
             {
-                //UPDATE `element_db`.`unit_info` SET `comment`= 'test' WHERE  `unit_id`= 862;
-                sql += string.Format("UPDATE unit_info SET " +
-                     "comment = {0} " +
-                     "WHERE unit_id = {1};",
-                    comments.Text, _id);
+                sql = string.Format("UPDATE unit_info SET comment = '{0}' WHERE unit_id = {1};", comments.Text, _id);
             }
-
 
 
 
@@ -322,7 +312,6 @@ namespace elementDB
                                  DateTime.Today.ToString("yyyy-MM-dd"), _id);
 
             sql += "COMMIT;";
-
             sqlJournal = sqlJournal.Remove(sqlJournal.Length - 2, 2);
             sqlJournal += ';';
 
@@ -490,6 +479,8 @@ namespace elementDB
                 "Гарантийный срок хранения",
                 textBox10.Text);
 
+            sql += string.Format("UPDATE unit_info SET comment = '{0}', last_update = '{1}' WHERE unit_id = {2};", comments.Text, DateTime.Today.ToString("yyyy-MM-dd"), _id);///////////////////////комментарии
+
             sql += "COMMIT;";
 
             sqlJournal = sqlJournal.Remove(sqlJournal.Length - 2, 2);
@@ -562,14 +553,13 @@ namespace elementDB
                 textBox5.Text != "" && textBox6.Text != "" &&
                 textBox7.Text != "" && textBox8.Text != "" &&
                 textBox9.Text != "" && textBox10.Text != "" &&
-                textBox11.Text != "" && comments.Text != "" &&
-                isResourcesDataChanged)
+                textBox11.Text != "" && comments.Text != "" && isResourcesDataChanged)
             {
                 sql = "SELECT * FROM varranty_res WHERE unit_id = " + _id;
 
                 dt = SQLCustom.SQL_Request(Form1.connection, sql);
 
-                if (dt.Rows.Count != 0)
+                if (dt.Rows.Count > 0)
                 {
                     isSuccessful = updateResources();
                 }
@@ -579,18 +569,17 @@ namespace elementDB
                 }
             }
 
-            //if (isSuccessful)
-            //{
+            if (isSuccessful)
+            {
                 makeRequest(_id);
                 Cursor = Cursors.Default;
                 this.Close();
                 MessageBox.Show("Данные успешно обновлены");
-            MessageBox.Show(sql);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Ошибка записи в базу данных!");
-            //}
+            }
+            else
+            {
+                MessageBox.Show("Ошибка записи в базу данных!");
+            }
 
         }
 
@@ -599,8 +588,9 @@ namespace elementDB
             isResourcesDataChanged = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void comments_TextChanged(object sender, EventArgs e)
         {
+            isResourcesDataChanged = true;
         }
     }
 }

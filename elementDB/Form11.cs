@@ -74,7 +74,9 @@ namespace elementDB
         {
             WindowState = FormWindowState.Maximized;
             m_filter = filter;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",
@@ -303,17 +305,17 @@ namespace elementDB
                                          textBox5.Text);
                 }
 
-               /* if (checkBox6.Checked)
-                {
-                    if (checkBox1.Checked || checkBox2.Checked || checkBox3.Checked || checkBox4.Checked || checkBox5.Checked)
-                    {
-                        sql += "AND";
-                    }
-                    sql += string.Format("unit_info.unit_id IN " +
-                     "(SELECT unit_id FROM contracts " +
-                     "WHERE product_code like '%{0}%')",
-                     textBox7.Text);
-                }*/
+                /* if (checkBox6.Checked)
+                 {
+                     if (checkBox1.Checked || checkBox2.Checked || checkBox3.Checked || checkBox4.Checked || checkBox5.Checked)
+                     {
+                         sql += "AND";
+                     }
+                     sql += string.Format("unit_info.unit_id IN " +
+                      "(SELECT unit_id FROM contracts " +
+                      "WHERE product_code like '%{0}%')",
+                      textBox7.Text);
+                 }*/
 
                 if (checkBox6.Checked)
                 {
@@ -323,15 +325,14 @@ namespace elementDB
                     }
                     if (metroRadioButton.Checked)
                     {
-                        sql += string.Format("product_code='{0}'", textBox6.Text);
+                        sql += string.Format("product_code='{0}'", textBox7.Text);
                     }
-                    if (metroRadioButton2.Checked)
+                    else if (metroRadioButton2.Checked)
                     {
                         sql += string.Format("unit_info.unit_id IN " +
-                         "(SELECT unit_id FROM contracts " +
+                         "(SELECT unit_id FROM unit_info " +
                          "WHERE product_code like '%{0}%')",
                          textBox7.Text);
-                        //sql += string.Format("product_code='%{0}%'", textBox6.Text);
                     }
                     if (!metroRadioButton.Checked && !metroRadioButton2.Checked) MessageBox.Show("Выберите способ поиска блока (точно/грубо)!");
                 }
@@ -804,7 +805,7 @@ namespace elementDB
 
 
 
-            
+
             //if (Ass(ignedHours(row) == 1)
             //{
             //    row.Cells["assigned_hours"].Style.BackColor = Color.Red;

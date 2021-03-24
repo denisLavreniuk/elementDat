@@ -20,7 +20,9 @@ namespace elementDB
         {
             m_id = id;
             m_parent = parent;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;

@@ -24,8 +24,10 @@ namespace elementDB
             m_parent = parent as Form11;
             String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
-            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_title;
-            BackColor = Color.PowderBlue;
+            this.Text = dt.Rows[0]["unit_num"].ToString();
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
             makeRequest(id);
             setTitle(m_id);
@@ -302,24 +304,7 @@ namespace elementDB
 
             if (dtOld.Rows[0]["col_14"].ToString() != comments.Text)////////////////////////////комментарии
             {
-                //UPDATE `element_db`.`unit_info` SET `comment`= 'test' WHERE  `unit_id`= 862;
-                sql += string.Format("UPDATE unit_info SET " +
-                     "comment = {0} " +
-                     "WHERE unit_id = {1};",
-                    comments.Text, m_id);
-
-
-
-
-                //sqlJournal += string.Format("('{0}', '{1}', '{2}', '{3}', " +
-                //    "'{4}', '{5}', '{6}'), ",
-                //    DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
-                //    Form1.userName,
-                //    "Изменение",
-                //    unitNum + " " + label9.Text,
-                //    "Наработка по техническому состояинию",
-                //    dtOld.Rows[0]["col_12"].ToString(),
-                //    textBox7.Text);
+                sql = string.Format("UPDATE unit_info SET comment = '{0}' WHERE unit_id = {1};", comments.Text, m_id);
             }
 
             if (dtOld.Rows[0]["col_2"].ToString() != textBox10.Text)
@@ -513,6 +498,8 @@ namespace elementDB
                 "Гарантийный срок хранения",
                 textBox10.Text);
 
+            sql += string.Format("UPDATE unit_info SET comment = '{0}', last_update = '{1}' WHERE unit_id = {2};", comments.Text, DateTime.Today.ToString("yyyy-MM-dd"), m_id);/////////////////////коммментарии
+
             sql += "COMMIT;";
 
             sqlJournal = sqlJournal.Remove(sqlJournal.Length - 2, 2);
@@ -638,7 +625,7 @@ namespace elementDB
             }
 
             if (String.Format("{0:yyyy-MM-dd}", dtOld.Rows[0]["contract_date"]) != dateTimePicker1.
-                Value.Date.ToString("yyyy-MM-dd"))               
+                Value.Date.ToString("yyyy-MM-dd"))
             {
                 sql += string.Format("UPDATE contracts SET " +
                    "contract_date = '{0}' " +
@@ -742,7 +729,7 @@ namespace elementDB
                 textBox5.Text != "" && textBox6.Text != "" &&
                 textBox7.Text != "" && textBox8.Text != "" &&
                 textBox9.Text != "" && textBox10.Text != "" &&
-                textBox11.Text != "" && isResourcesDataChanged)
+                textBox11.Text != "" && comments.Text != "" && isResourcesDataChanged)
             {
                 sql = "SELECT * FROM varranty_res WHERE unit_id = " + m_id;
 
@@ -782,12 +769,13 @@ namespace elementDB
                     m_parent.collectUnits();
                 }
                 Cursor = Cursors.Default;
+                this.Close();
+                MessageBox.Show("Данные успешно обновлены");
             }
             else
             {
                 MessageBox.Show("Ошибка записи в базу данных!");
             }
-
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
@@ -834,6 +822,11 @@ namespace elementDB
                 default:
                     break;
             }
+        }
+
+        private void comments_TextChanged(object sender, EventArgs e)
+        {
+            isResourcesDataChanged = true;
         }
     }
 }

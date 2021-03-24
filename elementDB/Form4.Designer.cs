@@ -342,7 +342,7 @@
             "Эксплуатационный",
             "КПН",
             "не подтвержден",
-            "отказ КН"});
+            "отказ КИ"});
             this.comboBox1.Location = new System.Drawing.Point(102, 183);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(416, 21);

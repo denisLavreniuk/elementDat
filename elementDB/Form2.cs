@@ -34,7 +34,9 @@ namespace elementDB
 
         public Form2(int id, Form form)
         {
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
             frm1 = form as Form1;
             _id = id;
@@ -247,6 +249,8 @@ namespace elementDB
                 textBox2.ReadOnly = false;
                 KD.ReadOnly = false;
                 textBox6.ReadOnly = false;
+                textBox9.ReadOnly = false;
+
 
                 checkBox1.Enabled = true;
                 maskedTextBox1.ReadOnly = false;
@@ -255,7 +259,6 @@ namespace elementDB
                 textBox14.ReadOnly = false;
                 addBtn.Enabled = true;
                 ControlBox = false;
-
 
 
 
@@ -288,6 +291,8 @@ namespace elementDB
                 textBox2.ReadOnly = true;
                 KD.ReadOnly = true;
                 textBox6.ReadOnly = true;
+                textBox9.ReadOnly = true;
+
 
                 checkBox1.Enabled = false;
                 maskedTextBox1.ReadOnly = true;
@@ -352,6 +357,8 @@ namespace elementDB
             string operating_hours;
             string remark;
             string notes;
+            //string reception_type;
+
             string sqlOld;
             string sqlJournal = "BEGIN; ";
 
@@ -366,6 +373,7 @@ namespace elementDB
             operating_hours = dt.Rows[0]["operating_hours"].ToString();
             remark = dt.Rows[0]["remark"].ToString();
             notes = dt.Rows[0]["notes"].ToString();
+            //reception_type = dt.Rows[0]["reception_type"].ToString();
 
             sqlJournal += "INSERT INTO journal_log " +
                 "(date_time, user, operation, num_code, property, old_value, new_value) " +
@@ -430,10 +438,11 @@ namespace elementDB
                                        "remark = '{3}', " +
                                        "last_update = '{4}', " +
                                        "notes = '{5}' " +
+                                       //"reception_type = '{6}' " +
                                        "WHERE unit_info.unit_id = {6}; ",
                                        textBox2.Text, KD.Text, textBox5.Text, textBox6.Text,
                                        DateTime.Today.ToString("yyyy-MM-dd"),
-                                       comboBox1.Text, _id);
+                                       comboBox1.Text, /*textBox9.Text,*/ _id);
 
             if (isDeviationChanged)
             {
@@ -481,8 +490,8 @@ namespace elementDB
 
             dt = SQLCustom.SQL_Request(Form1.connection, sql);
 
-            if (dt.ToString() == "")
-            {
+            //if (dt.ToString() == "")
+            //{
                 generalDataUpdated();
                 textBox5.ReadOnly = true;
                 textBox6.ReadOnly = true;
@@ -495,14 +504,14 @@ namespace elementDB
                 //MessageBox.Show("Данные успешно сохранены");
                 Cursor = Cursors.Default;
                 ControlBox = true;
-            }
-            else
-            {
-                makeRequest(_id);
-                MessageBox.Show("Ошибка записи в БД!");
-                Cursor = Cursors.Default;
-                ControlBox = true;
-            }
+            //}
+            //else
+            //{
+            //    makeRequest(_id);
+            //    MessageBox.Show("Ошибка записи в БД!");
+            //    Cursor = Cursors.Default;
+            //    ControlBox = true;
+            //}
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -674,14 +683,17 @@ namespace elementDB
                     button2.Enabled = false;
                     break;
                 case users.Btk:
+                    //textBox9.ReadOnly = false;
                     break;
                 case users.SuperRoot:
                     button8.Enabled = true;
                     checkBox1.Visible = true;
+                    //textBox9.ReadOnly = false;
                     break;
                 case users.Root:
                     button8.Enabled = true;
                     checkBox1.Visible = true;
+                    //textBox9.ReadOnly = false;
                     break;
                 default:
                     break;

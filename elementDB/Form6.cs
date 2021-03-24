@@ -23,7 +23,9 @@ namespace elementDB
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
             this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_unitTitle + " - Список работ";
             _id = id;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;

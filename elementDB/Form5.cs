@@ -24,7 +24,9 @@ namespace elementDB
             this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + parent.m_unitTitle + " - Версии ПО";
             m_id = id;
             m_parent = parent;
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;

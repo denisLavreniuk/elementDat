@@ -22,7 +22,9 @@ namespace elementDB
 
         public Form14(string filter)
         {
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",

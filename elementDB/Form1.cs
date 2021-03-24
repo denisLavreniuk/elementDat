@@ -59,7 +59,9 @@ namespace elementDB
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             collectUnits();
 
             dataGridView1.ReadOnly = false;
@@ -101,6 +103,7 @@ namespace elementDB
                                            dr["notes"],
                                            dr["product_code"],
                                            dr["izmKD"],
+                                           dr["equipment"],
                                            String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                            Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                            Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),
@@ -243,10 +246,17 @@ namespace elementDB
                 {
                     sql += string.Format("product_code='{0}'", textBox6.Text);
                 }
-                if (metroRadioButton2.Checked)
+                else if (metroRadioButton2.Checked)
                 {
+                    //sql += string.Format("SELECT unit_info.*, deviations.deviation_type " +
+                    //    "FROM unit_info " +
+                    //    "LEFT JOIN deviations " +
+                    //    "ON unit_info.unit_id = deviations.unit_id " +
+                    //    "WHERE product_code like '%" + textBox6.ToString()) + "%' " +
+                    //    "ORDER BY unit_num;";
+
                     sql += string.Format("unit_info.unit_id IN " +
-                     "(SELECT unit_id FROM contracts " +
+                     "(SELECT unit_id FROM unit_info " +
                      "WHERE product_code like '%{0}%')",
                      textBox6.Text);
                 }
@@ -267,6 +277,7 @@ namespace elementDB
                                        dr["notes"],
                                        dr["product_code"],
                                        dr["izmKD"],
+                                       dr["equipment"],
                                        String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                        Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                        Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),
@@ -988,7 +999,10 @@ namespace elementDB
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            if (textBox6.Text != "") checkBox7.Checked = true;
+            if (textBox6.Text != "")
+            {
+                checkBox7.Checked = true;
+            }
         }
 
 
