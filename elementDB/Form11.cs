@@ -445,7 +445,7 @@ namespace elementDB
                     Cells["warranty_exploit_period"].Value;
                 warrantyResource.type = Resources.WARRANTY;
 
-                if (row.Cells["change_name"].Value.ToString() != "для эксплуатации" && row.Cells["change_name"].Value.ToString() == "для эксплуатации")//для отсечения всех, блоков, кроме тех, который предназначены для эксплуатации исправить на if (row.Cells["change_name"].Value.ToString() != "для эксплуатации")
+                if (row.Cells["change_name"].Value.ToString() != "для эксплуатации" && row.Cells["change_name"].Value.ToString() == "для эксплуатации")//для отсечения всех, блоков, кроме тех, которые предназначены для эксплуатации исправить на if (row.Cells["change_name"].Value.ToString() != "для эксплуатации")
                 {
                     if (isUnderWarranty(warrantyResource, row))
                     {

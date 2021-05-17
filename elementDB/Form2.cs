@@ -34,9 +34,7 @@ namespace elementDB
 
         public Form2(int id, Form form)
         {
-            //BackColor = Color.PowderBlue;
-            BackColor = Color.LightSteelBlue;
-
+            BackColor = Color.PowderBlue;
             InitializeComponent();
             frm1 = form as Form1;
             _id = id;
@@ -83,6 +81,7 @@ namespace elementDB
                 textBox1.Text = dt.Rows[0]["unit_num"].ToString();
                 textBox2.Text = dt.Rows[0]["product_code"].ToString();
                 KD.Text = dt.Rows[0]["izmKD"].ToString();
+                equipmentText.Text = dt.Rows[0]["equipment"].ToString();
                 textBox3.Text = String.Format("{0:yyyy-MM-dd}", dt.Rows[0]["release_date"]);
                 textBox4.Text = GetLastSW(id);
                 textBox5.Text = dt.Rows[0]["operating_hours"].ToString();
@@ -209,37 +208,6 @@ namespace elementDB
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //if (textBox1.ReadOnly == true || textBox2.ReadOnly == true || textBox3.ReadOnly == true || textBox4.ReadOnly == true || textBox5.ReadOnly == true || textBox6.ReadOnly == true || textBox7.ReadOnly == true || textBox8.Enabled == true)
-            //{
-            //    //comboBox1.Enabled = false;
-            //    textBox5.BackColor = Color.DarkGray;
-            //    textBox11.BackColor = Color.DarkGray;
-            //    textBox6.BackColor = Color.DarkGray;
-            //    textBox2.BackColor = Color.DarkGray;
-            //    textBox6.BackColor = Color.DarkGray;
-
-            //    //checkBox1.Enabled = false;
-            //    maskedTextBox1.BackColor = Color.DarkGray;
-            //    textBox12.BackColor = Color.DarkGray;
-            //    textBox13.BackColor = Color.DarkGray;
-            //    textBox14.BackColor = Color.DarkGray;
-            //}
-            //else if (textBox1.ReadOnly == false || textBox2.ReadOnly == false || textBox3.ReadOnly == false || textBox4.ReadOnly == false || textBox5.ReadOnly == false || textBox6.ReadOnly == false || textBox7.ReadOnly == false || textBox8.Enabled == false)
-            //{
-            //    //comboBox1.Enabled = false;
-            //    textBox5.BackColor = Color.White;
-            //    textBox11.BackColor = Color.White;
-            //    textBox6.BackColor = Color.White;
-            //    textBox2.BackColor = Color.White;
-            //    textBox6.BackColor = Color.White;
-
-            //    //checkBox1.Enabled = false;
-            //    maskedTextBox1.BackColor = Color.White;
-            //    textBox12.BackColor = Color.White;
-            //    textBox13.BackColor = Color.White;
-            //    textBox14.BackColor = Color.White;
-            //}
-
             textBox12.Clear();
             if (textBox12.ReadOnly == true)
             {
@@ -248,9 +216,7 @@ namespace elementDB
                 textBox11.ReadOnly = false;
                 textBox2.ReadOnly = false;
                 KD.ReadOnly = false;
-                textBox6.ReadOnly = false;
-                textBox9.ReadOnly = false;
-
+                equipmentText.ReadOnly = false;
 
                 checkBox1.Enabled = true;
                 maskedTextBox1.ReadOnly = false;
@@ -259,28 +225,6 @@ namespace elementDB
                 textBox14.ReadOnly = false;
                 addBtn.Enabled = true;
                 ControlBox = false;
-
-
-
-
-
-
-                //comboBox1.Enabled = false;
-                //textBox5.BackColor = Color.DarkGray;
-                //textBox11.BackColor = Color.DarkGray;
-                //textBox6.BackColor = Color.DarkGray;
-                //textBox2.BackColor = Color.DarkGray;
-                //textBox6.BackColor = Color.DarkGray;
-
-                ////checkBox1.Enabled = false;
-                //maskedTextBox1.BackColor = Color.DarkGray;
-                //textBox12.BackColor = Color.DarkGray;
-                //textBox13.BackColor = Color.DarkGray;
-                //textBox14.BackColor = Color.DarkGray;
-
-
-
-
             }
             else
             {
@@ -291,8 +235,7 @@ namespace elementDB
                 textBox2.ReadOnly = true;
                 KD.ReadOnly = true;
                 textBox6.ReadOnly = true;
-                textBox9.ReadOnly = true;
-
+                equipmentText.ReadOnly = true;
 
                 checkBox1.Enabled = false;
                 maskedTextBox1.ReadOnly = true;
@@ -300,51 +243,6 @@ namespace elementDB
                 textBox13.ReadOnly = true;
                 textBox14.ReadOnly = true;
                 addBtn.Enabled = false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                //textBox5.BackColor = Color.White;
-                //textBox11.BackColor = Color.White;
-                //textBox6.BackColor = Color.White;
-                //textBox2.BackColor = Color.White;
-                //textBox6.BackColor = Color.White;
-
-                ////checkBox1.Enabled = false;
-                //maskedTextBox1.BackColor = Color.White;
-                //textBox12.BackColor = Color.White;
-                //textBox13.BackColor = Color.White;
-                //textBox14.BackColor = Color.White;
-
-
-              
-                /*                 
-                 
-                comboBox1.Enabled = false;
-                textBox5.BackColor = Color.DarkGray;
-                textBox11.BackColor = Color.DarkGray;
-                textBox6.BackColor = Color.DarkGray;
-                textBox2.BackColor = Color.DarkGray;
-                textBox6.BackColor = Color.DarkGray;
-
-                checkBox1.Enabled = false;
-                maskedTextBox1.BackColor = Color.DarkGray;
-                textBox12.BackColor = Color.DarkGray;
-                textBox13.BackColor = Color.DarkGray;
-                textBox14.BackColor = Color.DarkGray;
-
-                 */
             }
         }
 
@@ -357,13 +255,12 @@ namespace elementDB
             string operating_hours;
             string remark;
             string notes;
-            //string reception_type;
-
             string sqlOld;
+            string equipment;
             string sqlJournal = "BEGIN; ";
 
             sqlOld = string.Format("Select " +
-                "product_code, izmKD, operating_hours, remark, notes " +
+                "product_code, izmKD, equipment, operating_hours, remark, notes " +
                 "FROM unit_info WHERE unit_id = {0}", _id);
 
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sqlOld);
@@ -373,7 +270,7 @@ namespace elementDB
             operating_hours = dt.Rows[0]["operating_hours"].ToString();
             remark = dt.Rows[0]["remark"].ToString();
             notes = dt.Rows[0]["notes"].ToString();
-            //reception_type = dt.Rows[0]["reception_type"].ToString();
+            equipment = dt.Rows[0]["remark"].ToString();
 
             sqlJournal += "INSERT INTO journal_log " +
                 "(date_time, user, operation, num_code, property, old_value, new_value) " +
@@ -433,16 +330,16 @@ namespace elementDB
 
             sql += string.Format("UPDATE `unit_info` SET " +
                                        "product_code = '{0}', " +
-                                       "izmKD ='{1}', "+
+                                       "izmKD ='{1}', " +
                                        "operating_hours = '{2}', " +
                                        "remark = '{3}', " +
                                        "last_update = '{4}', " +
-                                       "notes = '{5}' " +
-                                       //"reception_type = '{6}' " +
-                                       "WHERE unit_info.unit_id = {6}; ",
+                                       "notes = '{5}', " +
+                                       "equipment = '{6}' " +
+                                       "WHERE unit_info.unit_id = {7}; ",
                                        textBox2.Text, KD.Text, textBox5.Text, textBox6.Text,
                                        DateTime.Today.ToString("yyyy-MM-dd"),
-                                       comboBox1.Text, /*textBox9.Text,*/ _id);
+                                       comboBox1.Text, equipmentText.Text, _id);
 
             if (isDeviationChanged)
             {
@@ -490,8 +387,8 @@ namespace elementDB
 
             dt = SQLCustom.SQL_Request(Form1.connection, sql);
 
-            //if (dt.ToString() == "")
-            //{
+            if (dt.ToString() == "")
+            {
                 generalDataUpdated();
                 textBox5.ReadOnly = true;
                 textBox6.ReadOnly = true;
@@ -499,19 +396,20 @@ namespace elementDB
                 textBox4.ReadOnly = true;
                 textBox2.ReadOnly = true;
                 KD.ReadOnly = true;
+                equipmentText.ReadOnly = true;
                 comboBox1.Enabled = false;
                 makeRequest(_id);
                 //MessageBox.Show("Данные успешно сохранены");
                 Cursor = Cursors.Default;
                 ControlBox = true;
-            //}
-            //else
-            //{
-            //    makeRequest(_id);
-            //    MessageBox.Show("Ошибка записи в БД!");
-            //    Cursor = Cursors.Default;
-            //    ControlBox = true;
-            //}
+            }
+            else
+            {
+                makeRequest(_id);
+                MessageBox.Show("Ошибка записи в БД!");
+                Cursor = Cursors.Default;
+                ControlBox = true;
+            }
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -683,17 +581,16 @@ namespace elementDB
                     button2.Enabled = false;
                     break;
                 case users.Btk:
-                    //textBox9.ReadOnly = false;
                     break;
                 case users.SuperRoot:
                     button8.Enabled = true;
+                    button8.Visible = true;
                     checkBox1.Visible = true;
-                    //textBox9.ReadOnly = false;
                     break;
                 case users.Root:
                     button8.Enabled = true;
+                    button8.Visible = true;
                     checkBox1.Visible = true;
-                    //textBox9.ReadOnly = false;
                     break;
                 default:
                     break;
@@ -1164,6 +1061,11 @@ namespace elementDB
         private void metroButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void acceptanceButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

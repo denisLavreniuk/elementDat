@@ -31,6 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.unit_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.release_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.init_version = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sw_version = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operating_hours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.failures_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -95,19 +108,6 @@
             this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.unit_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.release_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.init_version = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sw_version = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deviations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operating_hours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.failures_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,6 +156,117 @@
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
+            // 
+            // unit_id
+            // 
+            this.unit_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.unit_id.HeaderText = "#";
+            this.unit_id.MinimumWidth = 6;
+            this.unit_id.Name = "unit_id";
+            this.unit_id.ReadOnly = true;
+            this.unit_id.Visible = false;
+            this.unit_id.Width = 55;
+            // 
+            // unit_num
+            // 
+            this.unit_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unit_num.FillWeight = 42.51987F;
+            this.unit_num.HeaderText = "Номер";
+            this.unit_num.MinimumWidth = 6;
+            this.unit_num.Name = "unit_num";
+            this.unit_num.ReadOnly = true;
+            // 
+            // notes
+            // 
+            this.notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.notes.HeaderText = "Примечания";
+            this.notes.MinimumWidth = 40;
+            this.notes.Name = "notes";
+            this.notes.ReadOnly = true;
+            // 
+            // product_code
+            // 
+            this.product_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.product_code.FillWeight = 121.4854F;
+            this.product_code.HeaderText = "Шифр, исполнение";
+            this.product_code.MinimumWidth = 6;
+            this.product_code.Name = "product_code";
+            this.product_code.ReadOnly = true;
+            // 
+            // KD
+            // 
+            this.KD.HeaderText = "Децимальный номер";
+            this.KD.Name = "KD";
+            this.KD.ReadOnly = true;
+            // 
+            // equipment
+            // 
+            this.equipment.HeaderText = "Комплектация";
+            this.equipment.Name = "equipment";
+            this.equipment.ReadOnly = true;
+            // 
+            // release_date
+            // 
+            this.release_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.release_date.FillWeight = 75.92834F;
+            this.release_date.HeaderText = "Выпуск";
+            this.release_date.MinimumWidth = 6;
+            this.release_date.Name = "release_date";
+            this.release_date.ReadOnly = true;
+            // 
+            // init_version
+            // 
+            this.init_version.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.init_version.FillWeight = 98.70685F;
+            this.init_version.HeaderText = "Начальная версия ПО";
+            this.init_version.MinimumWidth = 50;
+            this.init_version.Name = "init_version";
+            this.init_version.ReadOnly = true;
+            // 
+            // sw_version
+            // 
+            this.sw_version.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sw_version.FillWeight = 98.70685F;
+            this.sw_version.HeaderText = "Текущая версия ПО";
+            this.sw_version.MinimumWidth = 50;
+            this.sw_version.Name = "sw_version";
+            this.sw_version.ReadOnly = true;
+            // 
+            // deviations
+            // 
+            this.deviations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deviations.FillWeight = 106.2997F;
+            this.deviations.HeaderText = "Отклонение от КД";
+            this.deviations.MinimumWidth = 6;
+            this.deviations.Name = "deviations";
+            this.deviations.ReadOnly = true;
+            // 
+            // operating_hours
+            // 
+            this.operating_hours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.operating_hours.FillWeight = 50.11271F;
+            this.operating_hours.HeaderText = "Наработка, час";
+            this.operating_hours.MinimumWidth = 6;
+            this.operating_hours.Name = "operating_hours";
+            this.operating_hours.ReadOnly = true;
+            // 
+            // failures_count
+            // 
+            this.failures_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.failures_count.FillWeight = 48.59414F;
+            this.failures_count.HeaderText = "Количество отказов";
+            this.failures_count.MinimumWidth = 6;
+            this.failures_count.Name = "failures_count";
+            this.failures_count.ReadOnly = true;
+            // 
+            // LastUpdate
+            // 
+            this.LastUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastUpdate.FillWeight = 60.74268F;
+            this.LastUpdate.HeaderText = "Последние изменения";
+            this.LastUpdate.MinimumWidth = 6;
+            this.LastUpdate.Name = "LastUpdate";
+            this.LastUpdate.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -607,7 +718,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.724391F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.38015F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
             this.tableLayoutPanel1.Controls.Add(this.comboBox7, 9, 1);
             this.tableLayoutPanel1.Controls.Add(this.checkBox6, 9, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox8, 8, 2);
@@ -650,9 +761,9 @@
             // 
             this.comboBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(702, 29);
+            this.comboBox7.Location = new System.Drawing.Point(700, 29);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(165, 21);
+            this.comboBox7.Size = new System.Drawing.Size(164, 21);
             this.comboBox7.TabIndex = 37;
             this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
@@ -661,7 +772,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox6.Location = new System.Drawing.Point(701, 2);
+            this.checkBox6.Location = new System.Drawing.Point(699, 2);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(120, 22);
@@ -672,20 +783,20 @@
             // textBox8
             // 
             this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8.Location = new System.Drawing.Point(649, 54);
+            this.textBox8.Location = new System.Drawing.Point(648, 54);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(48, 20);
+            this.textBox8.Size = new System.Drawing.Size(47, 20);
             this.textBox8.TabIndex = 34;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // textBox7
             // 
             this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Location = new System.Drawing.Point(649, 28);
+            this.textBox7.Location = new System.Drawing.Point(648, 28);
             this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(48, 20);
+            this.textBox7.Size = new System.Drawing.Size(47, 20);
             this.textBox7.TabIndex = 33;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
@@ -694,7 +805,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(618, 56);
+            this.label11.Location = new System.Drawing.Point(617, 56);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 17);
@@ -706,7 +817,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(618, 30);
+            this.label10.Location = new System.Drawing.Point(617, 30);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 17);
@@ -719,7 +830,7 @@
             this.checkBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tableLayoutPanel1.SetColumnSpan(this.checkBox5, 2);
             this.checkBox5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox5.Location = new System.Drawing.Point(618, 2);
+            this.checkBox5.Location = new System.Drawing.Point(617, 2);
             this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(65, 22);
@@ -733,7 +844,7 @@
             this.textBox4.Location = new System.Drawing.Point(520, 54);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(94, 20);
+            this.textBox4.Size = new System.Drawing.Size(93, 20);
             this.textBox4.TabIndex = 27;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
@@ -757,7 +868,7 @@
             this.textBox5.Location = new System.Drawing.Point(520, 28);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(94, 20);
+            this.textBox5.Size = new System.Drawing.Size(93, 20);
             this.textBox5.TabIndex = 26;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -930,7 +1041,7 @@
             // 
             this.checkBox7.AutoSize = true;
             this.checkBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox7.Location = new System.Drawing.Point(872, 2);
+            this.checkBox7.Location = new System.Drawing.Point(869, 2);
             this.checkBox7.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(121, 17);
@@ -941,7 +1052,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(872, 54);
+            this.textBox6.Location = new System.Drawing.Point(869, 54);
             this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(280, 20);
@@ -956,12 +1067,12 @@
             this.tableLayoutPanel6.Controls.Add(this.metroRadioButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.metroRadioButton2, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(872, 28);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(869, 28);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(283, 22);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(286, 22);
             this.tableLayoutPanel6.TabIndex = 40;
             // 
             // metroRadioButton
@@ -974,7 +1085,7 @@
             this.metroRadioButton.Location = new System.Drawing.Point(2, 2);
             this.metroRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton.Name = "metroRadioButton";
-            this.metroRadioButton.Size = new System.Drawing.Size(137, 18);
+            this.metroRadioButton.Size = new System.Drawing.Size(139, 18);
             this.metroRadioButton.TabIndex = 3;
             this.metroRadioButton.TabStop = true;
             this.metroRadioButton.Text = "точно";
@@ -989,10 +1100,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroRadioButton2.AutoSize = true;
             this.metroRadioButton2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroRadioButton2.Location = new System.Drawing.Point(143, 2);
+            this.metroRadioButton2.Location = new System.Drawing.Point(145, 2);
             this.metroRadioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(138, 18);
+            this.metroRadioButton2.Size = new System.Drawing.Size(139, 18);
             this.metroRadioButton2.TabIndex = 4;
             this.metroRadioButton2.TabStop = true;
             this.metroRadioButton2.Text = "грубо";
@@ -1015,117 +1126,6 @@
             // 
             this.timer1.Interval = 20000;
             this.timer1.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // unit_id
-            // 
-            this.unit_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.unit_id.HeaderText = "#";
-            this.unit_id.MinimumWidth = 6;
-            this.unit_id.Name = "unit_id";
-            this.unit_id.ReadOnly = true;
-            this.unit_id.Visible = false;
-            this.unit_id.Width = 55;
-            // 
-            // unit_num
-            // 
-            this.unit_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unit_num.FillWeight = 42.51987F;
-            this.unit_num.HeaderText = "Номер";
-            this.unit_num.MinimumWidth = 6;
-            this.unit_num.Name = "unit_num";
-            this.unit_num.ReadOnly = true;
-            // 
-            // notes
-            // 
-            this.notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.notes.HeaderText = "Примечания";
-            this.notes.MinimumWidth = 40;
-            this.notes.Name = "notes";
-            this.notes.ReadOnly = true;
-            // 
-            // product_code
-            // 
-            this.product_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.product_code.FillWeight = 121.4854F;
-            this.product_code.HeaderText = "Шифр, исполнение";
-            this.product_code.MinimumWidth = 6;
-            this.product_code.Name = "product_code";
-            this.product_code.ReadOnly = true;
-            // 
-            // KD
-            // 
-            this.KD.HeaderText = "Децимальный номер";
-            this.KD.Name = "KD";
-            this.KD.ReadOnly = true;
-            // 
-            // equipment
-            // 
-            this.equipment.HeaderText = "Комплектация";
-            this.equipment.Name = "equipment";
-            this.equipment.ReadOnly = true;
-            // 
-            // release_date
-            // 
-            this.release_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.release_date.FillWeight = 75.92834F;
-            this.release_date.HeaderText = "Выпуск";
-            this.release_date.MinimumWidth = 6;
-            this.release_date.Name = "release_date";
-            this.release_date.ReadOnly = true;
-            // 
-            // init_version
-            // 
-            this.init_version.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.init_version.FillWeight = 98.70685F;
-            this.init_version.HeaderText = "Начальная версия ПО";
-            this.init_version.MinimumWidth = 50;
-            this.init_version.Name = "init_version";
-            this.init_version.ReadOnly = true;
-            // 
-            // sw_version
-            // 
-            this.sw_version.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sw_version.FillWeight = 98.70685F;
-            this.sw_version.HeaderText = "Текущая версия ПО";
-            this.sw_version.MinimumWidth = 50;
-            this.sw_version.Name = "sw_version";
-            this.sw_version.ReadOnly = true;
-            // 
-            // deviations
-            // 
-            this.deviations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.deviations.FillWeight = 106.2997F;
-            this.deviations.HeaderText = "Отклонение от КД";
-            this.deviations.MinimumWidth = 6;
-            this.deviations.Name = "deviations";
-            this.deviations.ReadOnly = true;
-            // 
-            // operating_hours
-            // 
-            this.operating_hours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.operating_hours.FillWeight = 50.11271F;
-            this.operating_hours.HeaderText = "Наработка, час";
-            this.operating_hours.MinimumWidth = 6;
-            this.operating_hours.Name = "operating_hours";
-            this.operating_hours.ReadOnly = true;
-            // 
-            // failures_count
-            // 
-            this.failures_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.failures_count.FillWeight = 48.59414F;
-            this.failures_count.HeaderText = "Количество отказов";
-            this.failures_count.MinimumWidth = 6;
-            this.failures_count.Name = "failures_count";
-            this.failures_count.ReadOnly = true;
-            // 
-            // LastUpdate
-            // 
-            this.LastUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LastUpdate.FillWeight = 60.74268F;
-            this.LastUpdate.HeaderText = "Последние изменения";
-            this.LastUpdate.MinimumWidth = 6;
-            this.LastUpdate.Name = "LastUpdate";
-            this.LastUpdate.ReadOnly = true;
             // 
             // Form1
             // 

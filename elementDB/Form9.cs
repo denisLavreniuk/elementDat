@@ -19,19 +19,41 @@ namespace elementDB
             //BackColor = Color.LightBlue;
             //BackColor = Color.FromArgb(0, 0, 0);
 
-            this.BackgroundImage = elementDB.Properties.Resources.gotovo;
+            //this.BackgroundImage = elementDB.Properties.Resources.gotovo;
+            //this.BackgroundImage = "Resources\gotovo.png";
             BackgroundImageLayout = ImageLayout.Stretch;
 
             InitializeComponent();
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
             this.Width = 1280;
             this.Height = 720;
 
             tableLayoutPanel1.Left = (this.ClientSize.Width - tableLayoutPanel1.ClientSize.Width) / 2;
-            tableLayoutPanel1.Top = (this.Height - tableLayoutPanel1.Height) / 2 - 130;
+            tableLayoutPanel1.Top = (this.Height - tableLayoutPanel1.Height) / 2 - 35;
+            //this.MaximizeBox = false;
+            //this.MinimizeBox = false;
+
+
+
+
+
+
+            String host = System.Net.Dns.GetHostName();////////////////////////////////////////////////////для того, чтоб не вводить парольна компьютере Ковальчука В.С.
+            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[0];
+            if (ip.ToString() == "192.168.0.55")
+            {
+                textBox1.Text = "Kn#T@";//пароль администратора (Ковальчука В.С.)
+            }
+            else if (ip.ToString() == "192.168.0.19")
+            {
+                textBox1.Text = "dq82d";//пароль разработчика
+                                        //System.Threading.Thread.Sleep(1000);
+            }
+            //else textBox1.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+            private void button1_Click(object sender, EventArgs e)
         {
             string connStr = "Server=192.168.0.37;charset= utf8;Database=element_db;Uid=element_user;password=lohozavr;";
             MySqlConnection connection = new MySqlConnection(connStr);

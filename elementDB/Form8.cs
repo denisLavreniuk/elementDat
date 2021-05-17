@@ -237,6 +237,7 @@ namespace elementDB
                 textBox3.Enabled = false;
                 textBox4.Enabled = false;
                 comboBox1.Enabled = false;
+                comboBox1.Text = null;
             }
             else
             {
