@@ -34,7 +34,9 @@ namespace elementDB
 
         public Form2(int id, Form form)
         {
-            BackColor = Color.PowderBlue;
+            //BackColor = Color.PowderBlue;
+            BackColor = Color.LightSteelBlue;
+
             InitializeComponent();
             frm1 = form as Form1;
             _id = id;

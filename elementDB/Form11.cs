@@ -13,7 +13,7 @@ using System.Drawing.Text;
 
 using System.IO;
 using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace elementDB
 {
@@ -24,7 +24,9 @@ namespace elementDB
         public string strtowrite = "";
         public string total = "";
         public float rdc1 = 0;
+        public float rdc117 = 0;
         public float rdc2 = 0;
+        public float rdc2_117 = 0;
         public float brt3 = 0;
         public float bzg1 = 0;
         public float kpa = 0;
@@ -37,12 +39,14 @@ namespace elementDB
         public float sid = 0;
         public float sid2 = 0;
 
-        public float nrdc = 0;
+        public float nrdc450 = 0;
+        public float nrdc117 = 0;
         public float nbzg = 0;
         public float nkpa = 0;
         public float nbrt = 0;
         public float nkpto = 0;
-        public float nrdc2 = 0;
+        public float nrdc4502 = 0;
+        public float nrdc1172 = 0;
         public float nbzg2 = 0;
         public float nkpa2 = 0;
         public float nbrt2 = 0;
@@ -508,13 +512,23 @@ namespace elementDB
         private void TotalBlocksRDC(DataGridViewRow row)
         {
             cb = int.Parse(textBox6.Text);
-            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ"))
+            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-450"))
             {
-                nrdc++;
+                nrdc450++;
                 int abc = (int)row.Cells["warranty_exploit_period"].Value * 30;
                 if (abc > (DateTime.Today - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
                 {
                     rdc1++;
+                }
+            }
+
+            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-117"))
+            {
+                nrdc117++;
+                int abc = (int)row.Cells["warranty_exploit_period"].Value * 30;
+                if (abc > (DateTime.Today - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
+                {
+                    rdc117++;
                 }
             }
 
@@ -568,13 +582,23 @@ namespace elementDB
                 }
             }
 
-            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ"))
+            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-450"))
             {
-                nrdc2++;
+                nrdc4502++;
                 int abc = (int)row.Cells["warranty_exploit_period"].Value * 30;
                 if (abc > (DateTime.Today.AddMonths(cb) - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
                 {
                     rdc2++;
+                }
+            }
+
+            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-117"))
+            {
+                nrdc1172++;
+                int abc = (int)row.Cells["warranty_exploit_period"].Value * 30;
+                if (abc > (DateTime.Today.AddMonths(cb) - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
+                {
+                    rdc2_117++;
                 }
             }
 
@@ -886,7 +910,7 @@ namespace elementDB
             savetxt.Filter = "TXT Files |*.txt";
             if (savetxt.ShowDialog() == DialogResult.OK)
             {
-                rdc1 = rdc2 = brt3 = bzg1 = kpa = kpa2 = bzg2 = brt = brt2 = kpto = kpto2 = sid = sid2 = nrdc = nbzg = nkpa = nbrt = nkpto = nrdc2 = nbzg2 = nkpa2 = nbrt2 = nkpto2 = nsid = nsid2 = 0;
+                rdc1 = rdc117 = rdc2 = rdc2_117 = brt3 = bzg1 = kpa = kpa2 = bzg2 = brt = brt2 = kpto = kpto2 = sid = sid2 = nrdc450 = nrdc117 = nbzg = nkpa = nbrt = nkpto = nrdc4502 = nbzg2 = nkpa2 = nbrt2 = nkpto2 = nsid = nsid2 = 0;
 
                 ResourcesData assignedResource;
                 ResourcesData beforeResource;
@@ -968,24 +992,27 @@ namespace elementDB
                         }
                     }
                     TotalBlocksRDC(row);
-                }
+                } 
 
                 cb = int.Parse(textBox6.Text);
-                float rdcProc = rdc1 / nrdc * 100;
+                float rdcProc = rdc1 / nrdc450 * 100;
+                float rdc117Proc = rdc117 / nrdc117 * 100;
                 float brtProc = brt / nbrt * 100;
                 float bzgProc = bzg1 / nbzg * 100;
                 float kpaProc = kpa / nkpa * 100;
                 float kptoProc = kpto / nkpto * 100;
                 float sidProc = sid / nsid * 100;
 
-                float rdcProc2 = rdc2 / nrdc * 100;
+                float rdcProc2 = rdc2 / nrdc450 * 100;
+                float rdc117Proc2 = rdc2_117 / nrdc117 * 100;
                 float brtProc2 = brt2 / nbrt * 100;
                 float bzgProc2 = bzg2 / nbzg * 100;
                 float kpaProc2 = kpa2 / nkpa * 100;
                 float kptoProc2 = kpto2 / nkpto * 100;
                 float sidProc2 = sid2 / nsid * 100;
                 total = "Отчет о гарантийном ресурсе блоков, выпускаемых АО Элемент по состоянию на " + DateTime.Today.ToShortDateString() + '\n' +
-               "РДЦ-450  всего: " + nrdc + "   из них на гарантии сейчас: " + rdc1 + "(" + Math.Round(rdcProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2 + "(" + Math.Round(rdcProc2, 2) + " %)" + '\n' +
+               "РДЦ-450  всего: " + nrdc450 + "   из них на гарантии сейчас: " + rdc1 + "(" + Math.Round(rdcProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2 + "(" + Math.Round(rdcProc2, 2) + " %)" + '\n' +
+               "РДЦ-117  всего: " + nrdc117 + "   из них на гарантии сейчас: " + rdc117 + "(" + Math.Round(rdc117Proc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2_117 + "(" + Math.Round(rdc117Proc2, 2) + " %)" + '\n' +
                "БРТ всего:  " + nbrt + " из них на гарантии сейчас: " + brt + "(" + Math.Round(brtProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + brt2 + "(" + Math.Round(brtProc2, 2) + " %)" + '\n' +
                "БЗГ всего:  " + nbzg + " из них на гарантии сейчас: " + bzg1 + "(" + Math.Round(bzgProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + bzg2 + "(" + Math.Round(bzgProc2, 2) + " %)" + '\n' +
                "КПА всего:  " + nkpa + " из них на гарантии сейчас:" + kpa + "(" + Math.Round(kpaProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + kpa2 + "(" + Math.Round(kpaProc2, 2) + " %)" + '\n' +
@@ -993,109 +1020,118 @@ namespace elementDB
                "СИД3 всего: " + nsid + " из них на гарантии сейчас: " + sid + "(" + Math.Round(sidProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + sid2 + "(" + Math.Round(sidProc2, 2) + " %)" + '\n';
                 strtowrite = total;
 
-                Excel.Application ObjExcel = new Excel.Application();
-                Excel.Workbook objWorkBook;
-                Excel.Worksheet objWorkSheet;
-                objWorkBook = ObjExcel.Workbooks.Add(@"D:\отчет.xlsx");
-                objWorkSheet = (Excel.Worksheet)objWorkBook.Sheets[1];
+                //Excel.Application ObjExcel = new Excel.Application();
+                //Excel.Workbook objWorkBook;
+                //Excel.Worksheet objWorkSheet;
+                //objWorkBook = ObjExcel.Workbooks.Add(@"D:\отчет.xlsx");
+                //objWorkSheet = (Excel.Worksheet)objWorkBook.Sheets[1];
 
 
-                Excel.Range _excelCells1 = objWorkSheet.get_Range("A1", "A3").Cells;
-                _excelCells1.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 1] = "№";
+                //Excel.Range _excelCells1 = objWorkSheet.get_Range("A1", "A3").Cells;
+                //_excelCells1.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 1] = "№";
 
-                Excel.Range _excelCells2 = objWorkSheet.get_Range("B1", "B3").Cells;
-                _excelCells2.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 2] = "Тип изделия";
+                //Excel.Range _excelCells2 = objWorkSheet.get_Range("B1", "B3").Cells;
+                //_excelCells2.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 2] = "Тип изделия";
 
-                Excel.Range _excelCells3 = objWorkSheet.get_Range("C1", "C3").Cells;
-                _excelCells3.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 3] = "Общее количество изделий";
+                //Excel.Range _excelCells3 = objWorkSheet.get_Range("C1", "C3").Cells;
+                //_excelCells3.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 3] = "Общее количество изделий";
 
-                Excel.Range _excelCells4 = objWorkSheet.get_Range("D1", "D3").Cells;
-                _excelCells4.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 4] = "Установленный гарантийный ресурс, год";
+                //Excel.Range _excelCells4 = objWorkSheet.get_Range("D1", "D3").Cells;
+                //_excelCells4.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 4] = "Установленный гарантийный ресурс, год";
 
-                Excel.Range _excelCells5 = objWorkSheet.get_Range("E1", "H1").Cells;
-                _excelCells5.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 5] = "Количество гарантийных изделий";
+                //Excel.Range _excelCells5 = objWorkSheet.get_Range("E1", "H1").Cells;
+                //_excelCells5.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 5] = "Количество гарантийных изделий";
 
-                Excel.Range _excelCells6 = objWorkSheet.get_Range("I1", "I1").Cells;
-                _excelCells6.Merge(Type.Missing);
-                objWorkSheet.Cells[1, 6] = "Примечания";
+                //Excel.Range _excelCells6 = objWorkSheet.get_Range("I1", "I1").Cells;
+                //_excelCells6.Merge(Type.Missing);
+                //objWorkSheet.Cells[1, 6] = "Примечания";
 
-                Excel.Range _excelCells7 = objWorkSheet.get_Range("E2", "F2").Cells;
-                _excelCells7.Merge(Type.Missing);
-                objWorkSheet.Cells[2, 5] = "На " + DateTime.Today.ToShortDateString();
+                //Excel.Range _excelCells7 = objWorkSheet.get_Range("E2", "F2").Cells;
+                //_excelCells7.Merge(Type.Missing);
+                //objWorkSheet.Cells[2, 5] = "На " + DateTime.Today.ToShortDateString();
 
-                Excel.Range _excelCells8 = objWorkSheet.get_Range("G2", "H2").Cells;
-                _excelCells8.Merge(Type.Missing);
-                objWorkSheet.Cells[2, 7] = "Через " + cb + " мес.";
+                //Excel.Range _excelCells8 = objWorkSheet.get_Range("G2", "H2").Cells;
+                //_excelCells8.Merge(Type.Missing);
+                //objWorkSheet.Cells[2, 7] = "Через " + cb + " мес.";
 
-                objWorkSheet.Cells[3, 5] = "Ед.";
-                objWorkSheet.Cells[3, 6] = "%";
-                objWorkSheet.Cells[3, 7] = "Ед.";
-                objWorkSheet.Cells[3, 8] = "%";
+                //objWorkSheet.Cells[3, 5] = "Ед.";
+                //objWorkSheet.Cells[3, 6] = "%";
+                //objWorkSheet.Cells[3, 7] = "Ед.";
+                //objWorkSheet.Cells[3, 8] = "%";
 
-                int i = 0;
-                objWorkSheet.Cells[4, 1] = ++i;
-                objWorkSheet.Cells[4, 2] = "РДЦ-450";
-                objWorkSheet.Cells[4, 3] = nrdc;
-                objWorkSheet.Cells[4, 4] = "1-3";
-                objWorkSheet.Cells[4, 5] = rdc1;
-                objWorkSheet.Cells[4, 6] = Math.Round(rdcProc, 2);
-                objWorkSheet.Cells[4, 7] = rdc2;
-                objWorkSheet.Cells[4, 8] = Math.Round(rdcProc2, 2);
+                //int i = 0;
+                //objWorkSheet.Cells[4, 1] = ++i;
+                //objWorkSheet.Cells[4, 2] = "РДЦ-450";
+                //objWorkSheet.Cells[4, 3] = nrdc450;
+                //objWorkSheet.Cells[4, 4] = "1-3";
+                //objWorkSheet.Cells[4, 5] = rdc1;
+                //objWorkSheet.Cells[4, 6] = Math.Round(rdcProc, 2);
+                //objWorkSheet.Cells[4, 7] = rdc2;
+                //objWorkSheet.Cells[4, 8] = Math.Round(rdcProc2, 2);
+                ////////////////////////////////////////////////////////////////////////////////////////
+                //objWorkSheet.Cells[5, 1] = ++i;
+                //objWorkSheet.Cells[5, 2] = "РДЦ-117";
+                //objWorkSheet.Cells[5, 3] = nrdc117;
+                //objWorkSheet.Cells[5, 4] = "1-3";
+                //objWorkSheet.Cells[5, 5] = rdc117;
+                //objWorkSheet.Cells[5, 6] = Math.Round(rdc117Proc, 2);
+                //objWorkSheet.Cells[5, 7] = rdc2_117;
+                //objWorkSheet.Cells[5, 8] = Math.Round(rdc117Proc2, 2);
 
-                objWorkSheet.Cells[5, 1] = ++i;
-                objWorkSheet.Cells[5, 2] = "БРТ";
-                objWorkSheet.Cells[5, 3] = nbrt;
-                objWorkSheet.Cells[5, 4] = "2";
-                objWorkSheet.Cells[5, 5] = brt;
-                objWorkSheet.Cells[5, 6] = Math.Round(brtProc, 2);
-                objWorkSheet.Cells[5, 7] = brt2;
-                objWorkSheet.Cells[5, 8] = Math.Round(brtProc2, 2);
+                //objWorkSheet.Cells[6, 1] = ++i;
+                //objWorkSheet.Cells[6, 2] = "БРТ";
+                //objWorkSheet.Cells[6, 3] = nbrt;
+                //objWorkSheet.Cells[6, 4] = "2";
+                //objWorkSheet.Cells[6, 5] = brt;
+                //objWorkSheet.Cells[6, 6] = Math.Round(brtProc, 2);
+                //objWorkSheet.Cells[6, 7] = brt2;
+                //objWorkSheet.Cells[6, 8] = Math.Round(brtProc2, 2);
 
-                objWorkSheet.Cells[6, 1] = ++i;
-                objWorkSheet.Cells[6, 2] = "БЗГ-450";
-                objWorkSheet.Cells[6, 3] = nbzg;
-                objWorkSheet.Cells[6, 4] = "1-2";
-                objWorkSheet.Cells[6, 5] = bzg1;
-                objWorkSheet.Cells[6, 6] = Math.Round(bzgProc, 2);
-                objWorkSheet.Cells[6, 7] = bzg2;
-                objWorkSheet.Cells[6, 8] = Math.Round(bzgProc2, 2);
+                //objWorkSheet.Cells[7, 1] = ++i;
+                //objWorkSheet.Cells[7, 2] = "БЗГ-450";
+                //objWorkSheet.Cells[7, 3] = nbzg;
+                //objWorkSheet.Cells[7, 4] = "1-2";
+                //objWorkSheet.Cells[7, 5] = bzg1;
+                //objWorkSheet.Cells[7, 6] = Math.Round(bzgProc, 2);
+                //objWorkSheet.Cells[7, 7] = bzg2;
+                //objWorkSheet.Cells[7, 8] = Math.Round(bzgProc2, 2);
 
-                objWorkSheet.Cells[7, 1] = ++i;
-                objWorkSheet.Cells[7, 2] = "КПА-450";
-                objWorkSheet.Cells[7, 3] = nkpa;
-                objWorkSheet.Cells[7, 4] = "2";
-                objWorkSheet.Cells[7, 5] = kpa;
-                objWorkSheet.Cells[7, 6] = Math.Round(kpaProc, 2);
-                objWorkSheet.Cells[7, 7] = kpa2;
-                objWorkSheet.Cells[7, 8] = Math.Round(kpaProc2, 2);
+                //objWorkSheet.Cells[8, 1] = ++i;
+                //objWorkSheet.Cells[8, 2] = "КПА-450";
+                //objWorkSheet.Cells[8, 3] = nkpa;
+                //objWorkSheet.Cells[8, 4] = "2";
+                //objWorkSheet.Cells[8, 5] = kpa;
+                //objWorkSheet.Cells[8, 6] = Math.Round(kpaProc, 2);
+                //objWorkSheet.Cells[8, 7] = kpa2;
+                //objWorkSheet.Cells[8, 8] = Math.Round(kpaProc2, 2);
 
-                objWorkSheet.Cells[8, 1] = ++i;
-                objWorkSheet.Cells[8, 2] = "КПТО";
-                objWorkSheet.Cells[8, 3] = nkpto;
-                objWorkSheet.Cells[8, 4] = "1-1,5";
-                objWorkSheet.Cells[8, 5] = kpto;
-                objWorkSheet.Cells[8, 6] = Math.Round(kptoProc, 2);
-                objWorkSheet.Cells[8, 7] = kpto2;
-                objWorkSheet.Cells[8, 8] = Math.Round(kptoProc2, 2);
+                //objWorkSheet.Cells[9, 1] = ++i;
+                //objWorkSheet.Cells[9, 2] = "КПТО";
+                //objWorkSheet.Cells[9, 3] = nkpto;
+                //objWorkSheet.Cells[9, 4] = "1-1,5";
+                //objWorkSheet.Cells[9, 5] = kpto;
+                //objWorkSheet.Cells[9, 6] = Math.Round(kptoProc, 2);
+                //objWorkSheet.Cells[9, 7] = kpto2;
+                //objWorkSheet.Cells[9, 8] = Math.Round(kptoProc2, 2);
 
-                objWorkSheet.Cells[9, 1] = ++i;
-                objWorkSheet.Cells[9, 2] = "СИД-3-148";
-                objWorkSheet.Cells[9, 3] = nsid;
-                objWorkSheet.Cells[9, 4] = "2";
-                objWorkSheet.Cells[9, 5] = sid;
-                objWorkSheet.Cells[9, 6] = Math.Round(sidProc, 2);
-                objWorkSheet.Cells[9, 7] = sid2;
-                objWorkSheet.Cells[9, 8] = Math.Round(sidProc2, 2);
+                //objWorkSheet.Cells[10, 1] = ++i;
+                //objWorkSheet.Cells[10, 2] = "СИД-3-148";
+                //objWorkSheet.Cells[10, 3] = nsid;
+                //objWorkSheet.Cells[10, 4] = "2";
+                //objWorkSheet.Cells[10, 5] = sid;
+                //objWorkSheet.Cells[10, 6] = Math.Round(sidProc, 2);
+                //objWorkSheet.Cells[10, 7] = sid2;
+                //objWorkSheet.Cells[10, 8] = Math.Round(sidProc2, 2);
 
 
-                ObjExcel.Visible = true;
-                ObjExcel.UserControl = true;
-                //File.WriteAllLines(sfd.FileName, output, System.Text.Encoding.UTF8);
+                //ObjExcel.Visible = true;
+                //ObjExcel.UserControl = true;
+                ////File.WriteAllLines(sfd.FileName, output, System.Text.Encoding.UTF8);
                 File.WriteAllText(savetxt.FileName, strtowrite, Encoding.UTF8);
             }
         }
@@ -1170,6 +1206,12 @@ namespace elementDB
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void GraphButton_Click(object sender, EventArgs e)
+        {
+            graphs newForm = new graphs();
+            newForm.Show();
         }
     }
 }

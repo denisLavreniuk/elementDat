@@ -56,7 +56,6 @@ namespace elementDB
                 "unit_info.unit_id = between_repairs_res.unit_id AND " +
                 "unit_info.unit_id = assigned_res.unit_id AND " +
                 "unit_info.unit_id = refurbished_res.unit_id AND " +
-                //"unit_info.unit_id = comment.unit_id AND " +///////////////////////////////////////////комментарии
                 "unit_info.unit_id = " + id.ToString();
 
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);

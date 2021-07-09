@@ -60,7 +60,7 @@ namespace elementDB
 
             listView1.Columns.Add("Тип", listView1.Width - 4);
             listView2.Columns.Add("Исполнение", listView1.Width);
-            listView3.Columns.Add("Верися ПО", listView1.Width);
+            listView3.Columns.Add("Версия ПО", listView1.Width);
         }
 
         private void resizeCloumns()

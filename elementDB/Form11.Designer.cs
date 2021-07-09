@@ -54,11 +54,12 @@
             this.change_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.GraphButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
@@ -355,21 +356,37 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.Controls.Add(this.GraphButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(609, 93);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(440, 93);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(377, 59);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(546, 59);
             this.tableLayoutPanel2.TabIndex = 21;
+            // 
+            // GraphButton
+            // 
+            this.GraphButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GraphButton.Location = new System.Drawing.Point(2, 2);
+            this.GraphButton.Margin = new System.Windows.Forms.Padding(2);
+            this.GraphButton.Name = "GraphButton";
+            this.GraphButton.Size = new System.Drawing.Size(151, 55);
+            this.GraphButton.TabIndex = 29;
+            this.GraphButton.Text = "Графики";
+            this.GraphButton.UseVisualStyleBackColor = true;
+            this.GraphButton.Click += new System.EventHandler(this.GraphButton_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -377,12 +394,12 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.metroButton1, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.metroButton2, 0, 1);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(303, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(468, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(71, 53);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(75, 53);
             this.tableLayoutPanel7.TabIndex = 28;
             // 
             // metroButton1
@@ -392,7 +409,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton1.Location = new System.Drawing.Point(3, 3);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(65, 20);
+            this.metroButton1.Size = new System.Drawing.Size(69, 20);
             this.metroButton1.TabIndex = 0;
             this.metroButton1.Text = "Шрифт +";
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
@@ -406,30 +423,30 @@
             this.metroButton2.Text = "Шрифт -";
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(312, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(151, 55);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Поиск";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(2, 2);
+            this.button1.Location = new System.Drawing.Point(157, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 55);
+            this.button1.Size = new System.Drawing.Size(151, 55);
             this.button1.TabIndex = 1;
             this.button1.Text = "Отчёт";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(152, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 55);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Поиск";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -834,5 +851,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private System.Windows.Forms.Button GraphButton;
     }
 }
