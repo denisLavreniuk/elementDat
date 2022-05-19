@@ -25,6 +25,7 @@ namespace elementDB
 
     public partial class Form1 : Form
     {
+        
         [DllImport("User32.dll")]
         private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
 
@@ -44,6 +45,13 @@ namespace elementDB
 
         public Form1()
         {
+            //Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            //DateTime buildDate = new DateTime(2021, 10, 29)
+            //                        .AddDays(version.Build).AddSeconds(version.Revision * 2);
+            //string displayableVersion = $"{version} ({buildDate})";
+            //verPOlabel.Text = displayableVersion.ToString();
+
+
             InitializeComponent();
             string connStr = "Server=192.168.0.37;charset= utf8;Database=element_db;Uid=element_user;password=lohozavr;";
             connection = new MySqlConnection(connStr);
@@ -107,6 +115,7 @@ namespace elementDB
                                            String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                            Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                            Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),
+                                           dr["revision"],
                                            dr["deviation_type"],
                                            dr["operating_hours"],
                                            dr["failures_count"],
@@ -281,6 +290,7 @@ namespace elementDB
                                        String.Format("{0:yyyy-MM-dd}", dr["release_date"]),
                                        Form2.GetFirstSW(Convert.ToInt32(dr["unit_id"].ToString())),
                                        Form2.GetLastSW(Convert.ToInt32(dr["unit_id"].ToString())),
+                                       dr["revision"],
                                        dr["deviation_type"],
                                        dr["operating_hours"],
                                        dr["failures_count"],
@@ -1019,6 +1029,7 @@ namespace elementDB
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
+
         }
 
         private void metroRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -1062,6 +1073,11 @@ namespace elementDB
                 dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", size);
             }
             else size = 1;
+        }
+
+        private void verPOlabel_Click(object sender, EventArgs e)
+        {
+            //verPOlabel.Text = AssemblyName.GetAssemblyName();
         }
     }
 }

@@ -20,6 +20,9 @@ namespace elementDB
         private int m_variant = 0;
         private int m_variantId = -1;
         private int m_software = 0;
+        private int m_softwareId = -1;
+        private int m_revision = 0;
+        private int m_revisionID = -1;
 
         public Form13(Form parent)
         {
@@ -57,22 +60,24 @@ namespace elementDB
             listView1.View = View.Details;
             listView2.View = View.Details;
             listView3.View = View.Details;
+            revisionListView.View = View.Details;
 
             listView1.Columns.Add("Тип", listView1.Width - 4);
             listView2.Columns.Add("Исполнение", listView1.Width);
             listView3.Columns.Add("Версия ПО", listView1.Width);
+            revisionListView.Columns.Add("Ревизия ПО", listView1.Width);
         }
 
-        private void resizeCloumns()
-        {
-            listView1.Columns[0].Width = listView1.Width - 4;
-            listView2.Columns[0].Width = listView2.Width - 4;
-            listView3.Columns[0].Width = listView3.Width - 4;
-        }
+        //private void resizeCloumns()
+        //{
+        //    listView1.Columns[0].Width = listView1.Width - 4;
+        //    listView2.Columns[0].Width = listView2.Width - 4;
+        //    listView3.Columns[0].Width = listView3.Width - 4;
+        //}
 
         private void Form13_Resize(object sender, EventArgs e)
         {
-            resizeCloumns();
+            //resizeCloumns();
         }
 
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -210,6 +215,63 @@ namespace elementDB
             sql = string.Format("INSERT INTO software_names " +
                 "(variant_id, software_name)  VALUES({0}, '{1}')",
                 m_variantId, textBox3.Text);
+
+            dt = SQLCustom.SQL_Request(m_connection, sql);
+
+            if (dt.ToString() != "")
+            {
+                MessageBox.Show("Ошибка записи в БД");
+            }
+            else
+            {
+                m_parent.initTree();
+                getDataFromTree();
+
+                if (listView2.Items[m_variant].Selected == true)
+                {
+                    listView2.Items[m_variant].Selected = false;
+                }
+                else
+                {
+                    listView2.Items[m_variant].Selected = true;
+                }
+
+                MessageBox.Show("Запись успешно добавлена");
+            }
+        }
+
+        private void revisionButton_Click(object sender, EventArgs e)
+        {
+            if (revisionTextBox.Text == "")
+            {
+                MessageBox.Show("Заполните поле");
+                return;
+            }
+
+            string sql = string.Format("SELECT software_id FROM software_names " +
+                "WHERE software_name = '{0}' AND " +
+
+
+                /////////////////////////////////////////////////////////////////////////////////////
+                "variant_id IN (SELECT variant_id FROM unit_names WHERE name = '{1}')",
+                listView2.Items[m_variant].Text,
+                listView1.Items[m_type].Text);
+
+            DataTable dt = SQLCustom.SQL_Request(m_connection, sql);
+
+            if (dt.Rows.Count > 0)
+            {
+                m_variantId = Convert.ToInt32(dt.Rows[0][0]);
+            }
+            else
+            {
+                MessageBox.Show("error");
+                return;
+            }
+
+            sql = string.Format("INSERT INTO software_names " +
+                "(variant_id, software_name)  VALUES({0}, '{1}')",
+                m_variantId, revisionTextBox.Text);
 
             dt = SQLCustom.SQL_Request(m_connection, sql);
 
@@ -610,6 +672,11 @@ namespace elementDB
                 default:
                     break;
             }
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -711,6 +711,7 @@ namespace elementDB
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox12.Text == "" && textBox14.Text != "") MessageBox.Show("Введите номер договора");
             Cursor = Cursors.WaitCursor;
             string sql;
             DataTable dt;

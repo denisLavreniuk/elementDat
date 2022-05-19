@@ -48,7 +48,6 @@ namespace elementDB
             else if (ip.ToString() == "192.168.0.19")
             {
                 textBox1.Text = "dq82d";//пароль разработчика
-                                        //System.Threading.Thread.Sleep(1000);
             }
             //else textBox1.Text = "";
         }
@@ -147,6 +146,11 @@ namespace elementDB
         {
             //textBox1.Text = "dq82d";
             //button1.PerformClick();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.PasswordChar = '*';
         }
     }
 }

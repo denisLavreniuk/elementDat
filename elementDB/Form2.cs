@@ -32,6 +32,7 @@ namespace elementDB
         private Form8 frm8;
         private Form10 frm10;
 
+
         public Form2(int id, Form form)
         {
             //BackColor = Color.PowderBlue;
@@ -45,26 +46,69 @@ namespace elementDB
             setAccessSettings();
 
             textBox12.Text = "Краткая информация о разрешениии";//подсказка
-
-
+            //comboBox1.BackColor = Color.Black;
+            //if (textBox5.ReadOnly == true) textBox5.BackColor = Color.DarkGray;
+            //else if (textBox5.ReadOnly == false) textBox5.BackColor = Color.White;
 
             //checkBox1.Enabled = false;
 
-            //if (textBox1.ReadOnly == true || textBox2.ReadOnly == true || textBox3.ReadOnly == true || textBox4.ReadOnly == true || textBox5.ReadOnly == true || textBox6.ReadOnly == true || textBox7.ReadOnly == true || textBox8.Enabled == true)
-            //{
-            //    //comboBox1.Enabled = false;
-            //    textBox5.BackColor = Color.DarkGray;
-            //    textBox11.BackColor = Color.DarkGray;
-            //    textBox6.BackColor = Color.DarkGray;
-            //    textBox2.BackColor = Color.DarkGray;
-            //    textBox6.BackColor = Color.DarkGray;
+            if (textBox1.ReadOnly == true || textBox2.ReadOnly == true || textBox3.ReadOnly == true ||
+                textBox4.ReadOnly == true || textBox5.ReadOnly == true || textBox6.ReadOnly == true ||
+                textBox7.ReadOnly == true || textBox8.Enabled == true || comboBox1.Enabled == false)
+            {
+                comboBox1.Enabled = false;
+                button1.BackColor = Color.OrangeRed;
 
-            //    //checkBox1.Enabled = false;
-            //    maskedTextBox1.BackColor = Color.DarkGray;
-            //    textBox12.BackColor = Color.DarkGray;
-            //    textBox13.BackColor = Color.DarkGray;
-            //    textBox14.BackColor = Color.DarkGray;
-            //}
+                //comboBox1.BackColor = Color.White;
+                //textBox1.BackColor = Color.White;
+                //textBox2.BackColor = Color.White;
+                //KD.BackColor = Color.White;
+                //textBox9.BackColor = Color.White;
+                //textBox8.BackColor = Color.White;
+                //textBox7.BackColor = Color.White;
+                //textBox5.BackColor = Color.White;
+                //textBox10.BackColor = Color.White;
+                //textBox11.BackColor = Color.White;
+                //textBox6.BackColor = Color.White;
+                //equipmentText.BackColor = Color.White;
+                ////checkBox1.Enabled = false;
+                //maskedTextBox1.BackColor = Color.White;
+                //textBox12.BackColor = Color.White;
+                //textBox13.BackColor = Color.White;
+                //textBox14.BackColor = Color.White;
+                //textBox13.BackColor = Color.White;
+                //textBox3.BackColor = Color.White;
+                //textBox4.BackColor = Color.White;
+                //revisionTB.BackColor = Color.White;
+
+
+
+
+
+
+                //comboBox1.Enabled = false;
+                //comboBox1.BackColor = Color.DarkGray;
+                //textBox1.BackColor = Color.DarkGray;
+                //textBox2.BackColor = Color.DarkGray;
+                //KD.BackColor = Color.DarkGray;
+                //textBox9.BackColor = Color.DarkGray;
+                //textBox8.BackColor = Color.DarkGray;
+                //textBox7.BackColor = Color.DarkGray;
+                //textBox5.BackColor = Color.DarkGray;
+                //textBox10.BackColor = Color.DarkGray;
+                //textBox11.BackColor = Color.DarkGray;
+                //textBox6.BackColor = Color.DarkGray;
+                //equipmentText.BackColor = Color.DarkGray;
+                ////checkBox1.Enabled = false;
+                //maskedTextBox1.BackColor = Color.DarkGray;
+                //textBox12.BackColor = Color.DarkGray;
+                //textBox13.BackColor = Color.DarkGray;
+                //textBox14.BackColor = Color.DarkGray;
+                //textBox13.BackColor = Color.DarkGray;
+                //textBox3.BackColor = Color.DarkGray;
+                //textBox4.BackColor = Color.DarkGray;
+                //revisionTB.BackColor = Color.DarkGray;
+            }
         }
 
         public void makeRequest(int id)
@@ -93,6 +137,7 @@ namespace elementDB
                 textBox8.Text = GetLastStatus(id);
                 textBox10.Text = GetLastRapair(id);
                 comboBox1.Text = dt.Rows[0]["notes"].ToString();
+                revisionTB.Text = dt.Rows[0]["revision"].ToString();
             }
 
             sql = "SELECT deviation_type FROM deviations WHERE unit_id = " + id;
@@ -213,13 +258,34 @@ namespace elementDB
             textBox12.Clear();
             if (textBox12.ReadOnly == true)
             {
+                textBox1.BackColor = Color.DarkGray;
+                textBox2.BackColor = Color.White;//
+                KD.BackColor = Color.White;//
+                textBox9.BackColor = Color.DarkGray;
+                textBox8.BackColor = Color.DarkGray;
+                textBox7.BackColor = Color.DarkGray;
+                textBox5.BackColor = Color.White;//
+                textBox10.BackColor = Color.DarkGray;
+                textBox11.BackColor = Color.White;//
+                textBox6.BackColor = Color.DarkGray;
+                equipmentText.BackColor = Color.White;//
+                maskedTextBox1.BackColor = Color.White;//
+                textBox12.BackColor = Color.White;//
+                textBox13.BackColor = Color.White;//
+                textBox14.BackColor = Color.White;//
+                textBox3.BackColor = Color.DarkGray;
+                textBox4.BackColor = Color.DarkGray;
+                revisionTB.BackColor = Color.White;//
+                comboBox1.BackColor = Color.White;//
+                button1.BackColor = Color.GreenYellow;
+
                 comboBox1.Enabled = true;
                 textBox5.ReadOnly = false;
                 textBox11.ReadOnly = false;
                 textBox2.ReadOnly = false;
                 KD.ReadOnly = false;
                 equipmentText.ReadOnly = false;
-
+                revisionTB.ReadOnly = false;
                 checkBox1.Enabled = true;
                 maskedTextBox1.ReadOnly = false;
                 textBox12.ReadOnly = false;
@@ -230,26 +296,113 @@ namespace elementDB
             }
             else
             {
+                textBox1.BackColor = Color.White;
+                textBox2.BackColor = Color.White;
+                KD.BackColor = Color.White;
+                textBox9.BackColor = Color.White;
+                textBox8.BackColor = Color.White;
+                textBox7.BackColor = Color.White;
+                textBox5.BackColor = Color.White;
+                textBox10.BackColor = Color.White;
+                textBox11.BackColor = Color.White;
+                textBox6.BackColor = Color.DarkGray;
+                equipmentText.BackColor = Color.White;
+                maskedTextBox1.BackColor = Color.White;
+                textBox12.BackColor = Color.White;
+                textBox13.BackColor = Color.White;
+                textBox14.BackColor = Color.White;
+                textBox3.BackColor = Color.White;
+                textBox4.BackColor = Color.White;
+                revisionTB.BackColor = Color.White;
+                comboBox1.BackColor = Color.White;
+                button1.BackColor = Color.OrangeRed;
+
+
                 comboBox1.Enabled = false;
                 textBox5.ReadOnly = true;
                 textBox11.ReadOnly = true;
                 textBox6.ReadOnly = true;
                 textBox2.ReadOnly = true;
                 KD.ReadOnly = true;
-                textBox6.ReadOnly = true;
+                //textBox6.ReadOnly = true;
                 equipmentText.ReadOnly = true;
+                revisionTB.ReadOnly = true;
 
                 checkBox1.Enabled = false;
+                checkBox1.Checked = false;
                 maskedTextBox1.ReadOnly = true;
                 textBox12.ReadOnly = true;
                 textBox13.ReadOnly = true;
                 textBox14.ReadOnly = true;
                 addBtn.Enabled = false;
             }
+            //if (textBox12.ReadOnly == true)
+            //{
+            //    comboBox1.Enabled = true;
+            //    comboBox1.BackColor = Color.White;
+            //    textBox5.ReadOnly = false;
+            //    textBox5.BackColor = Color.White;
+            //    textBox11.ReadOnly = false;
+            //    textBox11.BackColor = Color.White;
+            //    textBox2.ReadOnly = false;
+            //    textBox2.BackColor = Color.White;
+            //    KD.ReadOnly = false;
+            //    KD.BackColor = Color.White;
+            //    equipmentText.ReadOnly = false;
+            //    equipmentText.BackColor = Color.White;
+            //    revisionTB.ReadOnly = false;
+            //    revisionTB.BackColor = Color.White;
+
+            //    checkBox1.Enabled = true;
+            //    maskedTextBox1.ReadOnly = false;
+            //    maskedTextBox1.BackColor = Color.White;
+            //    textBox12.ReadOnly = false;
+            //    textBox12.BackColor = Color.White;
+            //    textBox13.ReadOnly = false;
+            //    textBox13.BackColor = Color.White;
+            //    textBox14.ReadOnly = false;
+            //    textBox14.BackColor = Color.White;
+            //    addBtn.Enabled = true;
+            //    ControlBox = false;
+            //}
+            //else
+            //{
+            //    comboBox1.Enabled = false;
+            //    comboBox1.BackColor = Color.DarkGray;
+            //    textBox5.ReadOnly = true;
+            //    textBox5.BackColor = Color.DarkGray;
+            //    textBox11.ReadOnly = true;
+            //    textBox11.BackColor = Color.DarkGray;
+            //    textBox6.ReadOnly = true;
+            //    textBox6.BackColor = Color.DarkGray;
+            //    textBox2.ReadOnly = true;
+            //    textBox2.BackColor = Color.DarkGray;
+            //    KD.ReadOnly = true;
+            //    KD.BackColor = Color.DarkGray;
+            //    //textBox6.ReadOnly = true;
+            //    equipmentText.ReadOnly = true;
+            //    equipmentText.BackColor = Color.DarkGray;
+            //    revisionTB.ReadOnly = true;
+            //    revisionTB.BackColor = Color.DarkGray;
+
+            //    checkBox1.Enabled = false;
+            //    checkBox1.Checked = false;
+            //    maskedTextBox1.ReadOnly = true;
+            //    maskedTextBox1.BackColor = Color.DarkGray;
+            //    textBox12.ReadOnly = true;
+            //    textBox12.BackColor = Color.DarkGray;
+            //    textBox13.ReadOnly = true;
+            //    textBox13.BackColor = Color.DarkGray;
+            //    textBox14.ReadOnly = true;
+            //    textBox14.BackColor = Color.DarkGray;
+            //    addBtn.Enabled = false;
+            //}
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (revisionTB.Text == "") revisionTB.Text = "0";
+
             Cursor = Cursors.WaitCursor;
             string sql = "BEGIN;";
             string product_code;
@@ -259,10 +412,12 @@ namespace elementDB
             string notes;
             string sqlOld;
             string equipment;
+            string revision;
+
             string sqlJournal = "BEGIN; ";
 
             sqlOld = string.Format("Select " +
-                "product_code, izmKD, equipment, operating_hours, remark, notes " +
+                "product_code, izmKD, equipment, operating_hours, remark, notes, revision " +
                 "FROM unit_info WHERE unit_id = {0}", _id);
 
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sqlOld);
@@ -273,6 +428,8 @@ namespace elementDB
             remark = dt.Rows[0]["remark"].ToString();
             notes = dt.Rows[0]["notes"].ToString();
             equipment = dt.Rows[0]["remark"].ToString();
+            revision = dt.Rows[0]["revision"].ToString();
+
 
             sqlJournal += "INSERT INTO journal_log " +
                 "(date_time, user, operation, num_code, property, old_value, new_value) " +
@@ -291,19 +448,21 @@ namespace elementDB
                     textBox2.Text);
             }
 
-            if (operating_hours != textBox5.Text)
-            {
-                sqlJournal += string.Format("('{0}', '{1}', '{2}', '{3}', " +
-                    "'{4}', '{5}', '{6}'), ",
-                    DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
-                    Form1.userName,
-                    "Изменение",
-                    textBox1.Text + " " + product_code,
-                    "Наработка",
-                    operating_hours,
-                    textBox5.Text);
-            }
+            /*if (revision != revisionTB.Text)
 
+                if (operating_hours != textBox5.Text)
+                {
+                    sqlJournal += string.Format("('{0}', '{1}', '{2}', '{3}', " +
+                        "'{4}', '{5}', '{6}'), ",
+                        DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
+                        Form1.userName,
+                        "Изменение",
+                        textBox1.Text + " " + product_code,
+                        "Наработка",
+                        operating_hours,
+                        textBox5.Text);
+                }
+            */
             if (remark != textBox6.Text)
             {
                 sqlJournal += string.Format("('{0}', '{1}', '{2}', '{3}', " +
@@ -337,11 +496,12 @@ namespace elementDB
                                        "remark = '{3}', " +
                                        "last_update = '{4}', " +
                                        "notes = '{5}', " +
-                                       "equipment = '{6}' " +
-                                       "WHERE unit_info.unit_id = {7}; ",
+                                       "equipment = '{6}', " +
+                                       "revision = '{7}' " +
+                                       "WHERE unit_info.unit_id = {8}; ",
                                        textBox2.Text, KD.Text, textBox5.Text, textBox6.Text,
                                        DateTime.Today.ToString("yyyy-MM-dd"),
-                                       comboBox1.Text, equipmentText.Text, _id);
+                                       comboBox1.Text, equipmentText.Text, revisionTB.Text, _id);
 
             if (isDeviationChanged)
             {
@@ -400,6 +560,7 @@ namespace elementDB
                 KD.ReadOnly = true;
                 equipmentText.ReadOnly = true;
                 comboBox1.Enabled = false;
+                revisionTB.ReadOnly = true;
                 makeRequest(_id);
                 //MessageBox.Show("Данные успешно сохранены");
                 Cursor = Cursors.Default;
@@ -1004,7 +1165,8 @@ namespace elementDB
         }
         private void addBtn_Click(object sender, EventArgs e)
         {
-            addInf = "Разрешение №" + maskedTextBox1.Text + " от " + dateTimePicker1.Value.ToString() + ". " + textBox12.Text + ". Действует с №" + textBox13.Text + ", на партию " + textBox14.Text + " шт." + Environment.NewLine;
+            addInf = "Разрешение №" + maskedTextBox1.Text + " от " + dateTimePicker1.Value.ToString() + ". " +
+                textBox12.Text + ". Действует с №" + textBox13.Text + ", на партию " + textBox14.Text + " шт." + Environment.NewLine;
             textBox6.Text += addInf;
         }
         private void label17_Click(object sender, EventArgs e)
@@ -1034,15 +1196,22 @@ namespace elementDB
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            textBox6.SelectionStart = textBox6.Text.Length;//скролл вниз по мере появления записей в textbox
-            textBox6.ScrollToCaret();//скролл вниз по мере появления записей в textbox
-
+            //textBox6.SelectionStart = textBox6.Text.Length;//скролл вниз по мере появления записей в textbox
+            //textBox6.ScrollToCaret();//скролл вниз по мере появления записей в textbox
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) textBox6.ReadOnly = false;
-            else textBox6.ReadOnly = true;
+            if (checkBox1.Checked)
+            {
+                textBox6.ReadOnly = false;
+                textBox6.BackColor = Color.White;
+            }
+            else
+            {
+                textBox6.ReadOnly = true;
+                textBox6.BackColor = Color.DarkGray;
+            }
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
@@ -1068,6 +1237,22 @@ namespace elementDB
         private void acceptanceButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void revisionTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void revisionTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
         }
     }
 }

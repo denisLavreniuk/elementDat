@@ -23,7 +23,7 @@ namespace elementDB
 
             String sql = "SELECT * FROM `unit_info` WHERE `unit_id` = " + id.ToString();
             DataTable dt = SQLCustom.SQL_Request(Form1.connection, sql);
-            this.Text = dt.Rows[0]["unit_num"].ToString()+"   "+m_parent.m_unitTitle + " - Эксплуатирующие организации";
+            this.Text = dt.Rows[0]["unit_num"].ToString() + "   " + m_parent.m_unitTitle + " - Эксплуатирующие организации";
             m_id = id;
             //BackColor = Color.PowderBlue;
             BackColor = Color.LightSteelBlue;
@@ -187,6 +187,29 @@ namespace elementDB
                 comboBox1.Text = e.Row.Cells["ad_side"].Value.ToString();
                 textBox4.Text = e.Row.Cells["ad_number"].Value.ToString();
                 textBox1.Text = e.Row.Cells["stand_name"].Value.ToString();
+                if (comboBox1.Text == "ВВТ") VVTcheckBox.Checked = true;
+                else VVTcheckBox.Checked = false;
+
+                //textBox2.Text = e.Row.Cells["place_name"].Value.ToString();
+                //textBox3.Text = e.Row.Cells["la_number"].Value.ToString();
+                //if (comboBox1.Text == "ВВТ")
+                //{
+                //    comboBox1.Text = e.Row.Cells["ad_side"].Value.ToString();
+                //    VVTcheckBox.Checked = true;
+                //    textBox3.ReadOnly = true;
+                //    textBox4.ReadOnly = true;
+                //    comboBox1.Enabled = false;
+                //    textBox1.ReadOnly = true;
+                //}
+                //else
+                //{
+                //    textBox1.ReadOnly = false;
+                //    textBox2.ReadOnly = false;
+                //    textBox3.ReadOnly = false;
+                //    textBox4.ReadOnly = false;
+                //    VVTcheckBox.Checked = false;
+                //    comboBox1.Text = e.Row.Cells["ad_side"].Value.ToString();
+                //}
             }
         }
 
@@ -238,6 +261,8 @@ namespace elementDB
                 textBox4.Enabled = false;
                 comboBox1.Enabled = false;
                 comboBox1.Text = null;
+                textBox3.Text = null;
+                textBox4.Text = null;
             }
             else
             {
@@ -245,6 +270,61 @@ namespace elementDB
                 textBox4.Enabled = true;
                 comboBox1.Enabled = true;
             }
+        }
+        private void VVTcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (VVTcheckBox.Checked == true)
+            {
+                textBox3.Enabled = false;
+                textBox3.Text = "";
+                textBox4.Enabled = false;
+                textBox4.Text = "";
+                textBox1.Enabled = false;
+                textBox1.Text = "";
+                comboBox1.Enabled = false;
+                comboBox1.Text = "ВВТ";
+            }
+            else if (VVTcheckBox.Checked == false)
+            {
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox1.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox1.Text = "";
+            }
+            //if (i == 1)/*VVTcheckBox.Enabled == false)*/
+            //{
+            //    i--;
+            //    textBox3.Enabled = true;
+            //    textBox4.Enabled = true;
+            //    textBox1.Enabled = true;
+            //    comboBox1.Enabled = true;
+            //    comboBox1.Text = "";
+            //}
+        }
+        private void Form8_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

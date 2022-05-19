@@ -24,8 +24,10 @@ namespace elementDB
         public string strtowrite = "";
         public string total = "";
         public float rdc1 = 0;
+        public float rdcGraph = 0;
         public float rdc117 = 0;
         public float rdc2 = 0;
+        public float rdc2Graph = 0;
         public float rdc2_117 = 0;
         public float brt3 = 0;
         public float bzg1 = 0;
@@ -46,6 +48,7 @@ namespace elementDB
         public float nbrt = 0;
         public float nkpto = 0;
         public float nrdc4502 = 0;
+        public float nrdc4502Graph = 0;
         public float nrdc1172 = 0;
         public float nbzg2 = 0;
         public float nkpa2 = 0;
@@ -511,7 +514,7 @@ namespace elementDB
 
         private void TotalBlocksRDC(DataGridViewRow row)
         {
-            cb = int.Parse(textBox6.Text);
+            //cb = int.Parse(textBox6.Text);
             if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-450"))
             {
                 nrdc450++;
@@ -589,6 +592,16 @@ namespace elementDB
                 if (abc > (DateTime.Today.AddMonths(cb) - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
                 {
                     rdc2++;
+                }
+            }
+
+            if (row.Cells["product_code"].Value.ToString().Contains("РДЦ-450"))
+            {
+                nrdc4502Graph++;
+                int abc = (int)row.Cells["warranty_exploit_period"].Value * 30;
+                if (abc > (DateTime.Today.AddMonths(cb) - Convert.ToDateTime(row.Cells["release_date"].Value)).TotalDays)
+                {
+                    rdc2Graph++;
                 }
             }
 
@@ -992,7 +1005,7 @@ namespace elementDB
                         }
                     }
                     TotalBlocksRDC(row);
-                } 
+                }
 
                 cb = int.Parse(textBox6.Text);
                 float rdcProc = rdc1 / nrdc450 * 100;
@@ -1208,10 +1221,400 @@ namespace elementDB
         {
         }
 
+
+
         private void GraphButton_Click(object sender, EventArgs e)
         {
+
+            SaveFileDialog savetxt = new SaveFileDialog();
+            savetxt.Filter = "TXT Files |*.txt";
+
+            if (savetxt.ShowDialog() == DialogResult.OK)
+            {
+
+                for (cb = 1; cb <= 36; cb++)
+                {
+
+                    rdc1 = rdc117 = rdc2 = rdc2_117 = brt3 = bzg1 = kpa = kpa2 = bzg2 = brt = brt2 = kpto = kpto2 = sid = sid2 = nrdc450 = nrdc117 = nbzg = nkpa = nbrt = nkpto = nrdc4502 = nbzg2 = nkpa2 = nbrt2 = nkpto2 = nsid = nsid2 = 0;
+
+                    ResourcesData assignedResource;
+                    ResourcesData beforeResource;
+                    ResourcesData betweenResource;
+                    ResourcesData warrantyResource;
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        int unit_num = (int)row.Cells["unit_num"].Value;
+
+                        if (row.Cells["warranty_hours"].Value.ToString() == "")
+                        {
+                            continue;
+                        }
+
+                        warrantyResource.difference = (DateTime.Today - Convert.
+                            ToDateTime(row.Cells["release_date"].Value)).TotalDays;
+                        warrantyResource.unitOperatingHours = (int)row.
+                            Cells["operating_hours"].Value;
+                        warrantyResource.operatingHours = (int)row.
+                            Cells["warranty_hours"].Value;
+                        warrantyResource.periodMonths = (int)row.
+                            Cells["warranty_exploit_period"].Value;
+                        warrantyResource.type = Resources.WARRANTY;
+
+                        if (row.Cells["change_name"].Value.ToString() != "для эксплуатации" && row.Cells["change_name"].Value.ToString() == "для эксплуатации")//для отсечения всех, блоков, кроме тех, который предназначены для эксплуатации исправить на if (row.Cells["change_name"].Value.ToString() != "для эксплуатации")
+                        {
+                            if (isUnderWarranty(warrantyResource, row))
+                            {
+                                row.Cells["unit_num"].Style.BackColor = Color.PaleGreen;
+                            }
+                            else
+                            {
+                                row.Cells["unit_num"].Style.BackColor = Color.Yellow;
+                            }
+
+                            continue;
+                        }
+
+                        assignedResource.difference = warrantyResource.difference;
+                        assignedResource.unitOperatingHours = warrantyResource.unitOperatingHours;
+                        assignedResource.operatingHours = (int)row.Cells["assigned_hours"].Value;
+                        assignedResource.periodMonths = (int)row.Cells["assigned_period"].Value;
+                        assignedResource.type = Resources.ASSIGNED;
+
+                        beforeResource.difference = assignedResource.difference;
+                        beforeResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                        beforeResource.operatingHours = (int)row.Cells["before_first_repair_hours"].Value;
+                        beforeResource.periodMonths = (int)row.Cells["before_first_repair_period"].Value;
+                        beforeResource.type = Resources.BEFORE;
+
+                        betweenResource.difference = assignedResource.difference;
+                        betweenResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                        betweenResource.operatingHours = (int)row.Cells["between_repairs_hours"].Value;
+                        betweenResource.periodMonths = (int)row.Cells["between_repairs_period"].Value;
+                        betweenResource.type = Resources.BETWEEN;
+
+                        int counter = 1;
+
+                        if (isAssignedResourceExpire(assignedResource, row))
+                        {
+                            row.Cells["unit_num"].Style.BackColor = Color.OrangeRed;
+                        }
+                        else
+                        {
+                            if (!calculateResource(beforeResource, warrantyResource, counter, row))
+                            {
+                                if (betweenResource.periodMonths == 0 &&
+                                    betweenResource.operatingHours == 0 &&
+                                    assignedResource.periodMonths == 0 &&
+                                    assignedResource.operatingHours == 0)
+                                {
+                                    continue;
+                                }
+
+                                while (!calculateResource(betweenResource, warrantyResource, counter, row))
+                                {
+                                    counter++;
+                                }
+                            }
+                        }
+                        TotalBlocksRDC(row);
+                    }
+
+                    float rdcProc = rdc1 / nrdc450 * 100;
+                    float rdc117Proc = rdc117 / nrdc117 * 100;
+                    float brtProc = brt / nbrt * 100;
+                    float bzgProc = bzg1 / nbzg * 100;
+                    float kpaProc = kpa / nkpa * 100;
+                    float kptoProc = kpto / nkpto * 100;
+                    float sidProc = sid / nsid * 100;
+
+                    float rdcProc2 = rdc2 / nrdc450 * 100;
+                    float rdc117Proc2 = rdc2_117 / nrdc117 * 100;
+                    float brtProc2 = brt2 / nbrt * 100;
+                    float bzgProc2 = bzg2 / nbzg * 100;
+                    float kpaProc2 = kpa2 / nkpa * 100;
+                    float kptoProc2 = kpto2 / nkpto * 100;
+                    float sidProc2 = sid2 / nsid * 100;
+                    total = "Отчет о гарантийном ресурсе блоков, выпускаемых АО Элемент по состоянию на " + DateTime.Today.ToShortDateString() + '\n' +
+                   "РДЦ-450  всего: " + nrdc450 + "   из них на гарантии сейчас: " + rdc1 + "(" + Math.Round(rdcProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2 + "(" + Math.Round(rdcProc2, 2) + " %)" + '\n';
+                    //"РДЦ-117  всего: " + nrdc117 + "   из них на гарантии сейчас: " + rdc117 + "(" + Math.Round(rdc117Proc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2_117 + "(" + Math.Round(rdc117Proc2, 2) + " %)" + '\n' +
+                    //"БРТ всего:  " + nbrt + " из них на гарантии сейчас: " + brt + "(" + Math.Round(brtProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + brt2 + "(" + Math.Round(brtProc2, 2) + " %)" + '\n' +
+                    //"БЗГ всего:  " + nbzg + " из них на гарантии сейчас: " + bzg1 + "(" + Math.Round(bzgProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + bzg2 + "(" + Math.Round(bzgProc2, 2) + " %)" + '\n' +
+                    //"КПА всего:  " + nkpa + " из них на гарантии сейчас:" + kpa + "(" + Math.Round(kpaProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + kpa2 + "(" + Math.Round(kpaProc2, 2) + " %)" + '\n' +
+                    //"КПТО всего: " + nkpto + " из них на гарантии сейчас: " + kpto + "(" + Math.Round(kptoProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + kpto2 + "(" + Math.Round(kptoProc2, 2) + " %)" + '\n' +
+                    //"СИД3 всего: " + nsid + " из них на гарантии сейчас: " + sid + "(" + Math.Round(sidProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + sid2 + "(" + Math.Round(sidProc2, 2) + " %)" + '\n';
+                    strtowrite += total;
+
+
+
+                    string writePath = @"C:\Users\Денис\Desktop\111.txt";
+                    using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine(total);
+                    }
+                }
+            }
+            //File.WriteAllText(savetxt.FileName, strtowrite, Encoding.UTF8);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            SaveFileDialog savetxt = new SaveFileDialog();
+            savetxt.Filter = "TXT Files |*.txt";
+            if (savetxt.ShowDialog() == DialogResult.OK)
+            {
+
+                rdc1 = rdc117 = rdc2 = rdc2_117 = brt3 = bzg1 = kpa = kpa2 = bzg2 = brt = brt2 = kpto = kpto2 = sid = sid2 = nrdc450 = nrdc117 = nbzg = nkpa = nbrt = nkpto = nrdc4502 = nbzg2 = nkpa2 = nbrt2 = nkpto2 = nsid = nsid2 = 0;
+
+                ResourcesData assignedResource;
+                ResourcesData beforeResource;
+                ResourcesData betweenResource;
+                ResourcesData warrantyResource;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    int unit_num = (int)row.Cells["unit_num"].Value;
+
+                    if (row.Cells["warranty_hours"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+
+                    warrantyResource.difference = (DateTime.Today - Convert.
+                        ToDateTime(row.Cells["release_date"].Value)).TotalDays;
+                    warrantyResource.unitOperatingHours = (int)row.
+                        Cells["operating_hours"].Value;
+                    warrantyResource.operatingHours = (int)row.
+                        Cells["warranty_hours"].Value;
+                    warrantyResource.periodMonths = (int)row.
+                        Cells["warranty_exploit_period"].Value;
+                    warrantyResource.type = Resources.WARRANTY;
+
+                    if (row.Cells["change_name"].Value.ToString() != "для эксплуатации" && row.Cells["change_name"].Value.ToString() == "для эксплуатации")//для отсечения всех, блоков, кроме тех, который предназначены для эксплуатации исправить на if (row.Cells["change_name"].Value.ToString() != "для эксплуатации")
+                    {
+                        if (isUnderWarranty(warrantyResource, row))
+                        {
+                            row.Cells["unit_num"].Style.BackColor = Color.PaleGreen;
+                        }
+                        else
+                        {
+                            row.Cells["unit_num"].Style.BackColor = Color.Yellow;
+                        }
+                        continue;
+                    }
+
+                    assignedResource.difference = warrantyResource.difference;
+                    assignedResource.unitOperatingHours = warrantyResource.unitOperatingHours;
+                    assignedResource.operatingHours = (int)row.Cells["assigned_hours"].Value;
+                    assignedResource.periodMonths = (int)row.Cells["assigned_period"].Value;
+                    assignedResource.type = Resources.ASSIGNED;
+
+                    beforeResource.difference = assignedResource.difference;
+                    beforeResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                    beforeResource.operatingHours = (int)row.Cells["before_first_repair_hours"].Value;
+                    beforeResource.periodMonths = (int)row.Cells["before_first_repair_period"].Value;
+                    beforeResource.type = Resources.BEFORE;
+
+                    betweenResource.difference = assignedResource.difference;
+                    betweenResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                    betweenResource.operatingHours = (int)row.Cells["between_repairs_hours"].Value;
+                    betweenResource.periodMonths = (int)row.Cells["between_repairs_period"].Value;
+                    betweenResource.type = Resources.BETWEEN;
+
+                    int counter = 1;
+
+                    if (isAssignedResourceExpire(assignedResource, row))
+                    {
+                        row.Cells["unit_num"].Style.BackColor = Color.OrangeRed;
+                    }
+                    else
+                    {
+                        if (!calculateResource(beforeResource, warrantyResource, counter, row))
+                        {
+                            if (betweenResource.periodMonths == 0 &&
+                                betweenResource.operatingHours == 0 &&
+                                assignedResource.periodMonths == 0 &&
+                                assignedResource.operatingHours == 0)
+                            {
+                                continue;
+                            }
+
+                            while (!calculateResource(betweenResource, warrantyResource, counter, row))
+                            {
+                                counter++;
+                            }
+                        }
+                    }
+                    for (int cb = 1; cb < 5; cb++)
+                    {
+                        StreamWriter sw = new StreamWriter(@"C:\Users\Денис\Desktop\Test1.txt", true, Encoding.Default);
+
+                        TotalBlocksRDC(row);
+
+
+
+                        //rdcProc = rdc1 / nrdc450 * 100;
+                        //rdc117Proc = rdc117 / nrdc117 * 100;
+                        //brtProc = brt / nbrt * 100;
+                        //bzgProc = bzg1 / nbzg * 100;
+                        //kpaProc = kpa / nkpa * 100;
+                        //kptoProc = kpto / nkpto * 100;
+                        //sidProc = sid / nsid * 100;
+
+                        //float rdcProc2 = rdc2 / nrdc450 * 100;
+                        //float rdc117Proc2 = rdc2_117 / nrdc117 * 100;
+                        //float brtProc2 = brt2 / nbrt * 100;
+                        //float bzgProc2 = bzg2 / nbzg * 100;
+                        //float kpaProc2 = kpa2 / nkpa * 100;
+                        //float kptoProc2 = kpto2 / nkpto * 100;
+                        //float sidProc2 = sid2 / nsid * 100;
+                        total = "РДЦ-450  всего: " + nrdc450 + "   из них на гарантии сейчас: " + rdc1 + " будет через  " + cb + " месяцев:  " + rdc2 + +'\n';
+                        //strtowrite += total;
+                        sw.WriteLine(total);
+                        sw.Close();
+                    }
+                }
+
+                //cb = int.Parse(textBox6.Text);
+                float rdcProc = rdc1 / nrdc450 * 100;
+                float rdc117Proc = rdc117 / nrdc117 * 100;
+                float brtProc = brt / nbrt * 100;
+                float bzgProc = bzg1 / nbzg * 100;
+                float kpaProc = kpa / nkpa * 100;
+                float kptoProc = kpto / nkpto * 100;
+                float sidProc = sid / nsid * 100;
+
+                float rdcProc2 = rdc2 / nrdc450 * 100;
+                float rdc117Proc2 = rdc2_117 / nrdc117 * 100;
+                float brtProc2 = brt2 / nbrt * 100;
+                float bzgProc2 = bzg2 / nbzg * 100;
+                float kpaProc2 = kpa2 / nkpa * 100;
+                float kptoProc2 = kpto2 / nkpto * 100;
+                float sidProc2 = sid2 / nsid * 100;
+                total = "Отчет о гарантийном ресурсе блоков, выпускаемых АО Элемент по состоянию на " + DateTime.Today.ToShortDateString() + '\n' +
+               "РДЦ-450  всего: " + nrdc450 + "   из них на гарантии сейчас: " + rdc1 + "(" + Math.Round(rdcProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2 + "(" + Math.Round(rdcProc2, 2) + " %)" + '\n' +
+               "РДЦ-117  всего: " + nrdc117 + "   из них на гарантии сейчас: " + rdc117 + "(" + Math.Round(rdc117Proc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + rdc2_117 + "(" + Math.Round(rdc117Proc2, 2) + " %)" + '\n' +
+               "БРТ всего:  " + nbrt + " из них на гарантии сейчас: " + brt + "(" + Math.Round(brtProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + brt2 + "(" + Math.Round(brtProc2, 2) + " %)" + '\n' +
+               "БЗГ всего:  " + nbzg + " из них на гарантии сейчас: " + bzg1 + "(" + Math.Round(bzgProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + bzg2 + "(" + Math.Round(bzgProc2, 2) + " %)" + '\n' +
+               "КПА всего:  " + nkpa + " из них на гарантии сейчас:" + kpa + "(" + Math.Round(kpaProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + kpa2 + "(" + Math.Round(kpaProc2, 2) + " %)" + '\n' +
+               "КПТО всего: " + nkpto + " из них на гарантии сейчас: " + kpto + "(" + Math.Round(kptoProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + kpto2 + "(" + Math.Round(kptoProc2, 2) + " %)" + '\n' +
+               "СИД3 всего: " + nsid + " из них на гарантии сейчас: " + sid + "(" + Math.Round(sidProc, 2) + " %)" + "  будет через  " + cb + " месяцев:  " + sid2 + "(" + Math.Round(sidProc2, 2) + " %)" + '\n';
+                strtowrite += total;
+
+            }
+            File.AppendAllText(savetxt.FileName, strtowrite, Encoding.UTF8);
+
+        }
+
+
+        /*private void GraphButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savetxt2 = new SaveFileDialog();
+            savetxt2.Filter = "TXT Files |*.txt";
+
+            if (savetxt2.ShowDialog() == DialogResult.OK)
+            {
+                //rdc1 = rdc117 = rdc2 = rdc2_117 = brt3 = bzg1 = kpa = kpa2 = bzg2 = brt = brt2 = kpto = kpto2 = sid = sid2 = nrdc450 = nrdc117 = nbzg = nkpa = nbrt = nkpto = nrdc4502 = nbzg2 = nkpa2 = nbrt2 = nkpto2 = nsid = nsid2 = 0;
+                //rdcGraph = 0;
+                //rdc2Graph = 0;
+                ResourcesData assignedResource;
+                ResourcesData beforeResource;
+                ResourcesData betweenResource;
+                ResourcesData warrantyResource;
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+
+
+                    int unit_num = (int)row.Cells["unit_num"].Value;
+
+                    if (row.Cells["warranty_hours"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+
+                    warrantyResource.difference = (DateTime.Today - Convert.
+                        ToDateTime(row.Cells["release_date"].Value)).TotalDays;
+                    warrantyResource.unitOperatingHours = (int)row.
+                        Cells["operating_hours"].Value;
+                    warrantyResource.operatingHours = (int)row.
+                        Cells["warranty_hours"].Value;
+                    warrantyResource.periodMonths = (int)row.
+                        Cells["warranty_exploit_period"].Value;
+                    warrantyResource.type = Resources.WARRANTY;
+
+                    if (row.Cells["change_name"].Value.ToString() != "для эксплуатации" && row.Cells["change_name"].Value.ToString() == "для эксплуатации")//для отсечения всех, блоков, кроме тех, который предназначены для эксплуатации исправить на if (row.Cells["change_name"].Value.ToString() != "для эксплуатации")
+                    {
+                        if (isUnderWarranty(warrantyResource, row))
+                        {
+                            row.Cells["unit_num"].Style.BackColor = Color.PaleGreen;
+                        }
+                        else
+                        {
+                            row.Cells["unit_num"].Style.BackColor = Color.Yellow;
+                        }
+
+                        continue;
+                    }
+
+                    assignedResource.difference = warrantyResource.difference;
+                    assignedResource.unitOperatingHours = warrantyResource.unitOperatingHours;
+                    assignedResource.operatingHours = (int)row.Cells["assigned_hours"].Value;
+                    assignedResource.periodMonths = (int)row.Cells["assigned_period"].Value;
+                    assignedResource.type = Resources.ASSIGNED;
+
+                    beforeResource.difference = assignedResource.difference;
+                    beforeResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                    beforeResource.operatingHours = (int)row.Cells["before_first_repair_hours"].Value;
+                    beforeResource.periodMonths = (int)row.Cells["before_first_repair_period"].Value;
+                    beforeResource.type = Resources.BEFORE;
+
+                    betweenResource.difference = assignedResource.difference;
+                    betweenResource.unitOperatingHours = assignedResource.unitOperatingHours;
+                    betweenResource.operatingHours = (int)row.Cells["between_repairs_hours"].Value;
+                    betweenResource.periodMonths = (int)row.Cells["between_repairs_period"].Value;
+                    betweenResource.type = Resources.BETWEEN;
+
+                    int counter = 1;
+
+                    if (isAssignedResourceExpire(assignedResource, row))
+                    {
+                        row.Cells["unit_num"].Style.BackColor = Color.OrangeRed;
+                    }
+                    else
+                    {
+                        if (!calculateResource(beforeResource, warrantyResource, counter, row))
+                        {
+                            if (betweenResource.periodMonths == 0 &&
+                                betweenResource.operatingHours == 0 &&
+                                assignedResource.periodMonths == 0 &&
+                                assignedResource.operatingHours == 0)
+                            {
+                                continue;
+                            }
+
+                            while (!calculateResource(betweenResource, warrantyResource, counter, row))
+                            {
+                                counter++;
+                            }
+                        }
+                    }
+                    TotalBlocksRDC(row);
+                }
+
+                //cb = int.Parse(textBox6.Text);
+                for (cb = 1; cb <= 36; cb++)
+                {
+                    total = "Отчет о гарантийном ресурсе блоков, выпускаемых АО Элемент по состоянию на " + DateTime.Today.ToShortDateString() + '\n' +
+                   "РДЦ-450  всего: " + nrdc450 + "   из них на гарантии сейчас: " + rdcGraph + "  будет через  " + cb + " месяцев:  " + rdc2Graph + '\n';
+                    strtowrite += total;
+                }
+
+                File.WriteAllText(savetxt2.FileName, strtowrite, Encoding.UTF8);
+
+            }
             graphs newForm = new graphs();
             newForm.Show();
-        }
+        }*/
+
     }
 }

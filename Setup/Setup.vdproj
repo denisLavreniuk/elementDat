@@ -15,13 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_17DE3164270CA8F68191DD85E2F729E0"
+        "MsmKey" = "8:_121135170A3925DFE932E064F1DE9E86"
+        "OwnerKey" = "8:_591C3ED5F9EAB4DAE84626934ABF0571"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_121135170A3925DFE932E064F1DE9E86"
         "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_27A8B9B9925B9C5FFC3E4C61A7E211F9"
+        "MsmKey" = "8:_17DE3164270CA8F68191DD85E2F729E0"
         "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -34,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_44B1F743745F6347D3E0E31D9725BF31"
+        "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_591C3ED5F9EAB4DAE84626934ABF0571"
         "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -105,6 +117,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C95E9E8BCA3881245BFB99CD42B3EC90"
+        "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FD7189CEB9FE289C5FD22BABF08BA7E5"
         "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
         "MsmSig" = "8:_UNDEFINED"
@@ -113,6 +131,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C58AE5BE05B34893B6179770E59CADEF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_591C3ED5F9EAB4DAE84626934ABF0571"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_121135170A3925DFE932E064F1DE9E86"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -172,7 +202,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_27A8B9B9925B9C5FFC3E4C61A7E211F9"
+        "OwnerKey" = "8:_C95E9E8BCA3881245BFB99CD42B3EC90"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -270,20 +300,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_17DE3164270CA8F68191DD85E2F729E0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_121135170A3925DFE932E064F1DE9E86"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:zlib.net, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_17DE3164270CA8F68191DD85E2F729E0"
+                    "_121135170A3925DFE932E064F1DE9E86"
                     {
-                    "Name" = "8:MetroFramework.Design.dll"
+                    "Name" = "8:zlib.net.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:MetroFramework.Design.dll"
+            "SourcePath" = "8:zlib.net.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_16CC0621661E4EEF807963092BFC4056"
@@ -301,20 +331,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_27A8B9B9925B9C5FFC3E4C61A7E211F9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_17DE3164270CA8F68191DD85E2F729E0"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_27A8B9B9925B9C5FFC3E4C61A7E211F9"
+                    "_17DE3164270CA8F68191DD85E2F729E0"
                     {
-                    "Name" = "8:System.Net.Http.dll"
+                    "Name" = "8:MetroFramework.Design.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Net.Http.dll"
+            "SourcePath" = "8:MetroFramework.Design.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_16CC0621661E4EEF807963092BFC4056"
@@ -377,6 +407,37 @@
                     }
                 }
             "SourcePath" = "8:MySql.Data.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_16CC0621661E4EEF807963092BFC4056"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_591C3ED5F9EAB4DAE84626934ABF0571"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:UnshieldSharp, Version=1.6.6.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_591C3ED5F9EAB4DAE84626934ABF0571"
+                    {
+                    "Name" = "8:UnshieldSharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:UnshieldSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_16CC0621661E4EEF807963092BFC4056"
@@ -569,6 +630,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C95E9E8BCA3881245BFB99CD42B3EC90"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_C95E9E8BCA3881245BFB99CD42B3EC90"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_16CC0621661E4EEF807963092BFC4056"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FD7189CEB9FE289C5FD22BABF08BA7E5"
             {
             "AssemblyRegister" = "3:1"
@@ -667,21 +759,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ЭСПУ"
-        "ProductCode" = "8:{44D86800-518F-44D3-9DE3-9EAD5C430DB3}"
-        "PackageCode" = "8:{31064C46-E356-4B8A-B9EB-6878D70E43E9}"
+        "ProductCode" = "8:{D9D69D3F-97E5-4D73-A5D0-15FFD0369BB2}"
+        "PackageCode" = "8:{A1D0EBE1-03A9-4E80-BC2B-24BF2B5793A4}"
         "UpgradeCode" = "8:{4FFA275F-6D24-44C0-A6D5-99119B9C42BD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.0.3"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:Element"
-        "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPTELEPHONE" = "8:+380952897117"
+        "ARPHELPLINK" = "8:http://www.element.odessa.ua"
         "Title" = "8:Установка"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Element"
+        "ARPCONTACT" = "8:Lavreniuk"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
